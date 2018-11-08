@@ -163,7 +163,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        App\Providers\DataServicesProviders::class,
+        
         /*
          * Application Service Providers...
          */

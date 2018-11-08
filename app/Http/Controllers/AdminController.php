@@ -18,7 +18,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        return view('adm.dashboard');
     }
     /**
      * Show the form for creating a new resource.
@@ -27,7 +27,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.auth.register');
+        return view('adm.auth.register');
     }
     /**
      * Store a newly created resource in storage.
@@ -39,15 +39,15 @@ class AdminController extends Controller
     {
         // validate the data
         $this->validate($request, [
-          'name'          => 'required',
-          'email'         => 'required',
-          'password'      => 'required'
-        ]);
+          'name'     => 'required',
+          'username' => 'required',
+          'password' => 'required'
+          ]);
         // store in the database
-        $admins = new Admin;
-        $admins->name = $request->name;
-        $admins->email = $request->email;
-        $admins->password=bcrypt($request->password);
+        $admins           = new Admin;
+        $admins->name     = $request->name;
+        $admins->username = $request->username;
+        $admins->password =bcrypt($request->password);
         $admins->save();
         return redirect()->route('admin.auth.login');
     }

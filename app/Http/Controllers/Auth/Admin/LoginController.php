@@ -26,10 +26,10 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
-       public function __construct()
-       {
-           $this->middleware('guest:admin')->except('logout');
-       }
+    public function __construct()
+    {
+    	$this->middleware('guest:admin')->except('logout');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,27 +37,28 @@ class LoginController extends Controller
      */
     public function login()
     {
-        return view('adm.auth.login');
+    	return view('adm.auth.login');
     }
+    
     public function loginAdmin(Request $request)
     {
       // Validate the form data
-      $this->validate($request, [
-        'username' => 'required',
-        'password' => 'required'
-      ]);
+    	$this->validate($request, [
+    		'username' => 'required',
+    		'password' => 'required'
+    	]);
 
       // Attempt to log the user in
-      if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
+    	if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('admin.dashboard'));
-      }
+    		return redirect()->intended(route('admin.dashboard'));
+    	}
       // if unsuccessful, then redirect back to the login with the form data
-      return redirect()->back()->withInput($request->only('username', 'remember'));
+    	return redirect()->back()->withInput($request->only('username', 'remember'));
     }
     public function logout()
     {
-        Auth::guard('admin')->logout();
-        return redirect()->route('admin.auth.login');
+    	Auth::guard('admin')->logout();
+    	return redirect()->route('admin.auth.login');
     }
 }

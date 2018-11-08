@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DatosTableSeeder::class);
         $this->call(LogosTableSeeder::class);
         $this->call(MetadatosTableSeeder::class);
+        $this->call(SlidersTableSeeder::class);
+        $this->call(FamiliasTableSeeder::class);
     }
 }

@@ -1,12 +1,12 @@
-@extends('layouts.adm.app')
-@extends('layouts.adm.navbar')
+@extends('adm.layouts.app')
+@extends('adm.layouts.navbar')
 <div style="margin-top: -1.7%" >
-    @extends('layouts.adm.sidebar')
+	@extends('adm.layouts.sidebar')
 </div>
 
 
 
-@include('layouts.script')
+@include('adm.layouts.script')
 <script>
     $(document).ready(function(){
         $('.collapsible').collapsible();
