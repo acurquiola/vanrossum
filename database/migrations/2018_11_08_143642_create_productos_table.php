@@ -17,7 +17,9 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->string('nombre')->nullable();
             $table->string('codigo')->nullable();
+            $table->string('orden')->nullable();
             $table->text('descripcion')->nullable();
+            $table->string('file_image')->default('no-image.jpg')->nullable();
             $table->unsignedInteger('familia_id');
             $table->foreign('familia_id')->references('id')->on('familias')->onDelete('cascade');  
             $table->timestamps();

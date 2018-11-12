@@ -15,6 +15,10 @@ class CreateEmpresasTable extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('mision')->nullable();
+            $table->text('vision')->nullable();
+            $table->text('valores')->nullable();
+            $table->string('file_image')->default('no-image.jpg')->nullable();
             $table->timestamps();
         });
     }

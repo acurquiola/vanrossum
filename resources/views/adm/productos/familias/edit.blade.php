@@ -41,7 +41,13 @@
 
 
 							<div class="right">
-								<a href="{{ action('FamiliaController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+								@if($nivel <= '1')
+									<a href="{{ action('FamiliaController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+								@else
+								<div class="col s6">
+									<a href="{{ action('SubfamiliaController@index', $familia->familia_id) }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+								</div>
+								@endif
 								<button class="btn waves-effect waves-light btn-color" type="submit" name="action">Submit
 									<i class="material-icons right">send</i>
 								</button>

@@ -49,8 +49,13 @@ class FamiliaController extends Controller
 
     public function edit($id)
     {
-    	$familia = Familia::find($id);
-    	return view('adm.productos.familias.edit', compact('familia'));
+        $familia = Familia::find($id);
+        $nivel   = $familia->nivel;
+        $familia_padre = null;
+        if($nivel>'1')
+            $familia_padre = Familia::find($familia->familia_id);
+
+    	return view('adm.productos.familias.edit', compact('familia', 'nivel', 'familia_padre'));
     }
 
     public function update(Request $request, $id)

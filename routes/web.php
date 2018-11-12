@@ -27,7 +27,7 @@ Route::prefix('adm')->group(function () {
 	Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
 	Route::get('register', 'AdminController@create')->name('admin.register');
 	Route::post('register', 'AdminController@store')->name('admin.register.store');
-	Route::get('login', 'Auth\Admin\LoginController@login')->name('admin.auth.login');
+	Route::get('/', 'Auth\Admin\LoginController@login')->name('admin.auth.login');
 	Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
 	Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
 
@@ -37,8 +37,10 @@ Route::prefix('adm')->group(function () {
 	//Ruta para la gestión de metadatos
 	Route::resource('metadatos', 'MetadatoController');
 
-	//Ruta para la gestión de empresa
-	Route::resource('empresa', 'EmpresaController');
+	//Ruta para la gestión de usuarios 
+	Route::prefix('empresa/')->group(function () {
+		Route::resource('index', 'EmpresaController');
+	});
 
 	//Ruta para la gestión de sliders
 	Route::get('slider/{seccion}', 'SliderController@index');
@@ -56,6 +58,13 @@ Route::prefix('adm')->group(function () {
 		Route::get('redes/edit/{id}', 'DatoController@editRedes');
 		Route::put('update/{id}', 'DatoController@update');
 	});
+
+	//Ruta para la gestión de Preguntas Frecuentes 
+	Route::prefix('preguntas/')->group(function () {
+		Route::resource('categorias', 'CategoriaController')->except(['show']);
+		Route::get('delete/{id}', 'CategoriaController@eliminar');
+	});
+
 
 	//Ruta para la gestión de usuarios 
 	Route::prefix('usuarios/')->group(function () {
@@ -79,7 +88,36 @@ Route::prefix('adm')->group(function () {
 		Route::prefix('/')->group(function () {
 			Route::resource('producto', 'ProductoController')->except(['show']);
 			Route::get('producto/delete/{id}', 'ProductoController@eliminar');	
+			Route::get('/select/subfamilias', 'ProductoController@subfamilias');
+
 		});
+
+		Route::prefix('presentaciones')->group(function () {
+			Route::get('/{id}', 'PresentacionController@index');
+			Route::get('/create/{id}', 'PresentacionController@create');
+			Route::post('/create/{id}', 'PresentacionController@store');
+			Route::get('/edit/{id}', 'PresentacionController@edit');
+			Route::put('/update/{id}', 'PresentacionController@update');
+			Route::get('presentacion/delete/{id}', 'PresentacionController@eliminar');	
+			Route::get('delete/{id}', 'PresentacionController@eliminar');
+		});
+
+
+		Route::prefix('descuentos')->group(function () {
+			Route::get('/{id}', 'DescuentoController@index');
+			Route::get('/create/{id}', 'DescuentoController@create');
+			Route::post('/create/{id}', 'DescuentoController@store');
+			Route::get('/edit/{id}', 'DescuentoController@edit');
+			Route::put('/update/{id}', 'DescuentoController@update');
+			Route::get('descuento/delete/{id}', 'DescuentoController@eliminar');	
+			Route::get('delete/{id}', 'DescuentoController@eliminar');
+		});
+
+		Route::prefix('unidades/')->group(function () {
+			Route::resource('unidad', 'UnidadController')->except(['show']);
+			Route::get('delete/{id}', 'UnidadController@eliminar');
+		});
+
 	});
 });
 

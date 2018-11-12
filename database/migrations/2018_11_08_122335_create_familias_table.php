@@ -16,7 +16,7 @@ class CreateFamiliasTable extends Migration
         Schema::create('familias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->nullable();
-            $table->string('file_image')->nullable();
+            $table->string('file_image')->default('no-image.jpg')->nullable();
             $table->string('orden')->nullable();
             $table->string('nivel')->default('1');
             $table->unsignedInteger('familia_id');

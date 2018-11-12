@@ -15,6 +15,12 @@ class CreatePresentacionsTable extends Migration
     {
         Schema::create('presentacions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('cantidad')->nullable();
+            $table->string('precio')->nullable();
+            $table->unsignedInteger('unidad_id');
+            $table->foreign('unidad_id')->references('id')->on('unidads')->onDelete('cascade');  
+            $table->unsignedInteger('producto_id')->nullable();
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');  
             $table->timestamps();
         });
     }

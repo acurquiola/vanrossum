@@ -1,6 +1,6 @@
-@include('layouts.adm.app')
-@include('layouts.adm.navbar')
-@include('layouts.adm.sidebar')
+@include('adm.layouts.app')
+@include('adm.layouts.navbar')
+@include('adm.layouts.sidebar')
 
 
 <main>
@@ -31,4 +31,4 @@
 			<div class="col s12">
 				<div class="col s12" id="breadcrumb-admin">
 					<a href="{{ url('adm/home/' )}}" class="breadcrumb">Home</a>
-					<a href="{{ url('adm/empresa/index' )}}" class="breadcrumb">Empresa</a>
+					<a href="{{ url('adm/empresa' )}}" class="breadcrumb">Empresa</a>

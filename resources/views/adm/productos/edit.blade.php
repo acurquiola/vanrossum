@@ -47,17 +47,7 @@
 								<textarea id="descripcion" name="descripcion"> {!! $producto->descripcion !!} </textarea>
 							</div>
 
-
-							<div class="col s12">
-								<h6 for="textarea1">Especificaciones</h6>
-							</div>
 							<div class="input-field col s12">
-
-								<textarea id="especificaciones" name="especificaciones"> {!! $producto->especificaciones !!} </textarea>
-							</div>
-
-
-							<div class="input-field col s5">
 								<select class="materialSelect" id="familia" name="familia_id">
 									@foreach ($familias as $f )
 									<option value="{{ $f->id }}" @if($f->id == $producto->familia_id) selected @endif >{{ ucwords($f->nombre) }} </option>
@@ -65,15 +55,9 @@
 								</select>
 							</div>
 
-							<div class="input-field col s5">
-								<select class="materialSelect" id="subfamilia" name="subfamilia_id">
-									@foreach ($subfamilias as $s )
-									<option value="{{ $s->id }}" @if($s->id == $producto->subfamilia_id) selected @endif >{{ ucwords($s->nombre) }} </option>
-									@endforeach
-								</select>
-							</div>
+			
 
-							<div class="input-field col s2">
+							<div class="input-field col s12">
 								<i class="material-icons prefix">keyboard_arrow_right</i>
 								<input id="icon_prefix" type="text" class="validate" name="orden"   value="{{$producto->orden}}" >
 								<label for="icon_prefix">Orden</label>
@@ -107,10 +91,6 @@
 	CKEDITOR.config.height = '150px';
 	CKEDITOR.config.width = '100%';
 
-	CKEDITOR.replace('especificaciones');
-	CKEDITOR.config.height = '150px';
-	CKEDITOR.config.width = '100%';
-
 
 	$(document).ready(function(){		
 		M.AutoInit();
@@ -120,20 +100,18 @@
 	
 
 
-	 $(document).on("change", '#familia', function () {
+	$(document).on("change", '#familia', function () {
         var subfamiliasURL = "{{ url('adm/productos/select/subfamilias')}}";
 
         $.get(subfamiliasURL,
                 {option: $(this).val()},
                 function (data) {
-                    var model = $('#subfamilia');
-                    model.empty();
-                    model.append("<option value='1'>Ninguna</option>");
+                	$('<select>').append('body');
                     $.each(data, function (index, element) {
                         model.append("<option value='" + element.id + "'>" + element.nombre + "</option>");
 
                     });
-                    $('select').formSelect();  
+                   /* $('select').formSelect();  */
 
                 }
         );

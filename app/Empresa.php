@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Empresa extends Model
 {
     protected $fillable = [
-    	'file_image', 'descripcion' 
+    	'file_image', 'mision', 'vision', 'valores'  
     ];
 }

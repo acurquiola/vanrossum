@@ -32,10 +32,30 @@
 							<div class="row">
 								
 								<div class="col s12">
-									<h6 for="textarea1">Descripción</h6>
+									<h6 for="textarea1">Misión</h6>
 								</div>
 								<div class="input-field col s12">
-									<textarea id="descripcion" name="descripcion"> {{ $empresa->descripcion }} </textarea>
+									<textarea id="mision" name="mision"> {{ $empresa->mision }} </textarea>
+								</div>
+
+							</div>
+							<div class="row">
+								
+								<div class="col s12">
+									<h6 for="textarea1">Visión</h6>
+								</div>
+								<div class="input-field col s12">
+									<textarea id="vision" name="vision"> {{ $empresa->vision }} </textarea>
+								</div>
+
+							</div>
+							<div class="row">
+								
+								<div class="col s12">
+									<h6 for="textarea1">Valores</h6>
+								</div>
+								<div class="input-field col s12">
+									<textarea id="valores" name="valores"> {{ $empresa->valores }} </textarea>
 								</div>
 
 							</div>
@@ -54,12 +74,20 @@
 	</div>
 </main>
 
-@include('layouts.script')
-
+@include('adm.layouts.script')
+ 
 <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 <script>
 
-	CKEDITOR.replace('descripcion');
+	CKEDITOR.replace('mision');
+	CKEDITOR.config.height = '150px';
+	CKEDITOR.config.width = '100%';
+	
+	CKEDITOR.replace('vision');
+	CKEDITOR.config.height = '150px';
+	CKEDITOR.config.width = '100%';
+	
+	CKEDITOR.replace('valores');
 	CKEDITOR.config.height = '150px';
 	CKEDITOR.config.width = '100%';
 	
