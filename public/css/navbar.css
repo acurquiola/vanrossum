@@ -1,0 +1,185 @@
+.top {
+    background-color: #F8A900;
+    height: 35px;
+}
+
+header .list-top {
+    margin: 0px 121px;
+}
+
+header .li-contacto a {
+    font-family: 'Montserrat';
+    color: #DDDDDD;
+    font-size: 15px;
+}
+
+header .li-contacto {
+    background-color: transparent;
+    border-radius: 0px;
+    float: right;
+    height: 35px;
+    width: 145px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+    border-right: 2px solid #777777;
+}
+
+header .li-presupuesto a {
+    font-family: 'Montserrat';
+    color: #DDDDDD;
+    font-size: 15px;
+}
+header .li-presupuesto {
+    background-color: transparent;
+    border-radius: 0px;
+    float: right;
+    height: 35px;
+    width: 243px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+    border-right: 2px solid #777777;
+    border-left: 2px solid #777777;
+}
+header .li-telefono a {
+    font-family: 'Montserrat';
+    color: #DDDDDD;
+    font-size: 16px;
+}
+header .li-telefono {
+    background-color: transparent;
+    border-radius: 0px;
+    float: left;
+    color: white;
+    position: relative;
+    height: 35px;
+    width: 145px;
+    display: flex;
+    align-items: center;
+}
+header .numero {
+    position: relative;
+    bottom: 0px;
+    left: 5px;
+}
+header .li-red {
+    background-color: transparent;
+    border-radius: 0px;
+    list-style: none;
+    float: right;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+}
+header .principal {
+    height: 175px!important;
+    background-color: white;
+    font-family: 'Montserrat';
+}
+
+.input_busqueda{
+    width: 100px;
+}
+
+nav ul a {
+    color: #989898!important;
+    font-size: 16px!important;
+    font-family: 'Montserrat';
+    font-weight: 300;
+}
+
+nav .brand-logo {
+    top: 55px;
+    height: 113px!important;
+}
+nav ul a:hover {
+    background-color: transparent!important;
+    color: #F8A900!important;
+    font-family: 'Montserrat';
+}
+.activo {
+    background-color: transparent!important;
+    color: #FF0000!important;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+nav .item-left {
+    position: relative;
+    top: 56px;
+    left: 8%;
+    width: 450px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+nav .item-right {
+    position: relative;
+    top: 56px;
+    right: -23%;
+    word-spacing: 0px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+nav ul li {
+    margin: 0px 5px;
+}
+
+header .li-lupa {
+    background-color: transparent;
+    border-radius: 0px;
+    float: left;
+    color: white;
+    position: relative;
+    height: 35px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+}
+
+header .li-busqueda {
+    background-color: transparent;
+    border-radius: 0px;
+    float: right;
+    height: 35px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-right: 2px solid #777777; */
+    border: none;
+    border-bottom: none;
+    margin-top: -35px;
+}
+
+#seccion-active,#header ul a:hover{
+    background: transparent;
+    border-bottom: 3px solid #F8A900;
+    margin-bottom: -3px;
+}
+
+#buscador:focus:not([readoy]){
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+::placeholder { 
+    color: #FFF;
+    font-size: 15px;
+    font-family: 'Montserrat';
+}
+
+
+@media(max-width: 992px) { 
+    nav .brand-logo{
+        top: 20px;
+    }
+}

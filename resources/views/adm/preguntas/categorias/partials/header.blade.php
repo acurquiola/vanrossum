@@ -31,5 +31,5 @@
 			<div class="col s12">
 				<div class="col s12" id="breadcrumb-admin">
 					<a href="{{ url('adm/home/' )}}" class="breadcrumb">Home</a>
-					<a href="{{ url('adm/preguntas' )}}" class="breadcrumb">Preguntas Frecuentes</a>
+					<a href="{{ url('adm/preguntas/pregunta' )}}" class="breadcrumb">Preguntas Frecuentes</a>
 					<a href="{{ url('adm/preguntas/categorias' )}}" class="breadcrumb">Categorías</a>

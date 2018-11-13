@@ -11,11 +11,11 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/home/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">home</i>Home</a>
 						<div class="collapsible-body" {{ (\Request::is('adm/home/*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=""><i class="material-icons">navigate_next</i>Información de Empresa</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Ver Destacados</a></li>
+								<li><a href="{{ action('HomeController@index') }}"><i class="material-icons">navigate_next</i>Información de Empresa</a></li>
+								<li><a href=""><i class="material-icons">navigate_next</i>Ver Descuentos</a></li>
 								<li><a href=""><i class="material-icons">navigate_next</i>Ver Productos</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
+								<li><a href="{{ action('SliderController@create', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
+								<li><a href="{{ action('SliderController@index', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>							
 						</div>
 					</li>
@@ -39,8 +39,8 @@
 							<ul>
 								<li><a href="{{ action('CategoriaController@create') }}"><i class="material-icons">navigate_next</i>Crear Categoría</a></li>
 								<li><a href="{{ action('CategoriaController@index') }}" ><i class="material-icons">navigate_next</i>Ver Categoría</a></li>
-								<li><a href="" ><i class="material-icons">navigate_next</i>Crear Preguntas</a></li>
-								<li><a href="" ><i class="material-icons">navigate_next</i>Ver Preguntas</a></li>
+								<li><a href="{{ action('PreguntaController@create') }}" ><i class="material-icons">navigate_next</i>Crear Preguntas</a></li>
+								<li><a href="{{ action('PreguntaController@index') }}" ><i class="material-icons">navigate_next</i>Ver Preguntas</a></li>
 							</ul>
 						</div>
 					</li>
@@ -49,10 +49,10 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/novedades*'))?"seccion-activa":"" }}" tabindex="0" ><i class="material-icons">new_releases</i>Novedades</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/novedades*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=""><i class="material-icons">navigate_next</i>Crear Novedad</a></li>
-								<li><a href="" ><i class="material-icons">navigate_next</i>Ver Novedades</a></li>
-								<li><a href="" ><i class="material-icons">navigate_next</i>Crear Categoría</a></li>
-								<li><a href="" ><i class="material-icons">navigate_next</i>Ver Categorías</a></li>
+								<li><a href="{{ action('ClasificacionController@create') }}"><i class="material-icons">navigate_next</i>Crear Categoría</a></li>
+								<li><a href="{{ action('ClasificacionController@index') }}" ><i class="material-icons">navigate_next</i>Ver Categorías</a></li>
+								<li><a href="{{ action('NovedadController@create') }}" ><i class="material-icons">navigate_next</i>Crear Novedad</a></li>
+								<li><a href="{{ action('NovedadController@index') }}" ><i class="material-icons">navigate_next</i>Ver Novedades</a></li>
 							</ul>
 						</div>
 					</li>
@@ -62,7 +62,7 @@
 						<div class="collapsible-body"  {{ (\Request::is('adm/empresa*'))?"style=display:block;":"" }}>
 							<ul>
 								<li><a href="{{ action('EmpresaController@index') }}"><i class="material-icons">navigate_next</i>Datos de la Empresa</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
+								<li><a href="{{ action('SliderController@create', ['seccion' => 'empresa']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
 								<li><a href="{{ action('SliderController@index', ['seccion' => 'empresa']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>
 						</div>
@@ -100,8 +100,7 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/clientes/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">people</i>Clientes</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/clientes/*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=""><i class="material-icons">navigate_next</i>Crear Cliente</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Editar Clientes</a></li>
+								<li><a href=""><i class="material-icons">navigate_next</i>Ver Clientes</a></li>
 							</ul>
 						</div>
 					</li>

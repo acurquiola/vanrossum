@@ -10,5 +10,10 @@ class Categoria extends Model
     	'nombre', 'orden' 
     ];
 
+
+    public function preguntas()
+	{
+	    return $this->hasMany('App\Pregunta');
+	}
     
 }

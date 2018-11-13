@@ -11,16 +11,40 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+
+Route::get('/', 'SeccionHomeController@index')->name('home');
 
 //Rutas para la gestión de clientes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search', 'SeccionHomeController@buscador');
 
 Route::prefix('adm')->group(function () {
+
+	// Admin Home
+	Route::prefix('home')->group(function () {
+		
+		// Admin Ofertas Destacadas
+			Route::resource('destacados', 'DestacadoController');
+
+		// Admin Productos Destacados
+			Route::resource('productos', 'DestacadoController');
+
+		//Información principal de la empresa
+			Route::get('/informacion/ver', 'HomeController@index');
+			Route::get('/informacion/{id}', 'HomeController@edit');
+			Route::put('/informacion/{id}', 'HomeController@update');
+
+		//Sliders del Home
+			Route::get('/sliders', 'HomeController@indexSlider');
+			Route::get('/sliders/create', 'HomeController@createSlider');
+			Route::post('/sliders', 'HomeController@storeSlider');
+			Route::get('/sliders/{id}', 'HomeController@editSlider');
+			Route::put('/sliders/{id}', 'HomeController@updateSlider');	
+			Route::get('/sliders/eliminar/{id}', 'HomeController@eliminar');
+
+	});
+
 
 	//Rutas para la gestión de usuarios administrativos
 	Route::get('home', 'AdminController@index')->name('admin.dashboard');
@@ -43,11 +67,11 @@ Route::prefix('adm')->group(function () {
 	});
 
 	//Ruta para la gestión de sliders
-	Route::get('slider/{seccion}', 'SliderController@index');
-	Route::get('slider/crear/{seccion}', 'SliderController@create');
-	Route::post('slider/{seccion}/{id}', 'SliderController@store');
-	Route::get('slider/edit/{seccion}/{id}', 'SliderController@edit');
-	Route::put('slider/update/{seccion}/{id}', 'SliderController@update');
+	Route::get('{seccion}/slider/', 'SliderController@index');
+	Route::get('{seccion}/slider/crear/', 'SliderController@create');
+	Route::post('{seccion}/slider', 'SliderController@store');
+	Route::get('{seccion}/slider/edit/{id}', 'SliderController@edit');
+	Route::put('{seccion}/slider/update/{id}', 'SliderController@update');
 	Route::get('slider/delete/{id}', 'SliderController@eliminar');
 
 	//Ruta para la gestión de contacto y redes
@@ -62,7 +86,21 @@ Route::prefix('adm')->group(function () {
 	//Ruta para la gestión de Preguntas Frecuentes 
 	Route::prefix('preguntas/')->group(function () {
 		Route::resource('categorias', 'CategoriaController')->except(['show']);
-		Route::get('delete/{id}', 'CategoriaController@eliminar');
+		Route::get('/categorias/delete/{id}', 'CategoriaController@eliminar');
+
+		Route::resource('pregunta', 'PreguntaController')->except(['show']);
+		Route::get('delete/{id}', 'PreguntaController@eliminar');
+	});
+
+
+	//Ruta para la gestión de novedades
+	Route::prefix('novedades/')->group(function () {
+		Route::resource('index', 'NovedadController')->except(['show']);
+		Route::get('delete/{id}', 'NovedadController@eliminar');
+			
+		//Categorias de Novedades
+			Route::resource('/categorias', 'ClasificacionController');
+			Route::get('/categorias/delete/{id}', 'ClasificacionController@eliminar');
 	});
 
 

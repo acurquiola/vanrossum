@@ -2,7 +2,7 @@
 
 					<a class="breadcrumb">Crear</a>
 				</div>
-				<form method="POST"  enctype="multipart/form-data" action="{{action('EmpresaController@storeSlider')}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
+				<form method="POST"  enctype="multipart/form-data" action="{{action('SliderController@store', ['seccion' => 'empresa'])}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
 					{{ csrf_field() }}    
 
 
@@ -20,25 +20,6 @@
 								<span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 1400x450</span>
 							</div>
 						</div>
-						
-						<div class="col s12">
-							<h6 for="textarea1">Título</h6>
-						</div>
-						<div class="input-field col s12">
-
-							<textarea id="titulo" name="titulo">  </textarea>
-						</div>
-						<div class="col s12">
-							<h6 for="textarea1">Descripción</h6>
-						</div>
-						<div class="input-field col s12">
-
-							<textarea id="descripcion" name="descripcion">  </textarea>
-						</div>
-
-					</div>
-
-					<div class="row">
 						<div class="input-field col s6">
 							<select name="seccion" disabled>
 								<option value="empresa" >Empresa</option>
@@ -54,7 +35,7 @@
 
 					<div class="row">
 						<div class="right">
-							<a href="{{ action('EmpresaController@indexSlider') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+							<a href="{{ action('SliderController@index', ['seccion' => 'empresa']) }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
 							<button class="btn waves-effect waves-light btn-color" type="submit" name="action">Submit
 								<i class="material-icons right">send</i>
 							</button>
@@ -78,16 +59,6 @@
 
 <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 <script>
-
-	CKEDITOR.replace('titulo');
-	CKEDITOR.config.height = '150px';
-	CKEDITOR.config.width = '100%';
-
-
-	CKEDITOR.replace('descripcion');
-	CKEDITOR.config.height = '150px';
-	CKEDITOR.config.width = '100%';
-
 
 	$(document).ready(function(){		
 

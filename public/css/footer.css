@@ -1,0 +1,75 @@
+
+#footer{
+    background: #F2F2F2;
+    min-height: 270px;
+}
+
+.footer-title{
+   /* padding-left: 2% !important;*/
+}
+
+.footer-title a{
+    font-size: 15px;
+    color: #717171;
+    font-family: 'Montserrat Semibold';
+    align-items: center;
+    text-align: center;
+    margin-top: 25%
+}
+
+#logo-footer img{
+    margin-top: 45%;
+}
+
+.footer-icon i{
+    position: relative;
+    margin-top: 5px;
+    color: #2196f3 ;
+}
+
+.footer-icon-rrss i{
+    color: #FFC107;
+    font-size: 25px;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+#nombre-footer{
+    color: #6E6E6E;
+    font-size: 15px;
+    font-family: 'Montserrat Semibold';
+}
+ 
+.footer-text a{
+    color: #595959;
+    font-size: 15px;
+    font-family: 'Montserrat';
+}
+
+#osole-span{
+    padding: 2% 4%; 
+    font-size: 13px; 
+    font-family: 'Montserrat'; 
+    color: #7D7D7D;
+    letter-spacing: 1;
+}
+
+@media(max-width: 992px) { 
+    #logo-footer{
+        margin-left: 0%;
+    }
+    #footer{
+        align-items: center;
+        text-align: center;
+    }
+    .footer-title{
+        margin-bottom: 5%;
+    }
+    #logo-footer{
+        margin-bottom: 5%;
+    }
+}
+
+
+
+

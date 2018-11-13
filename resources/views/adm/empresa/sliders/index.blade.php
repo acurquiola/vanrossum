@@ -8,7 +8,7 @@
 					<thead>
 						<tr>
 							<th>Imagen</th>
-							<th>Título</th>
+							<th>Orden</th>
 							<th>Opciones</th>
 						</tr>
 					</thead>
@@ -17,7 +17,7 @@
 
 							<tr>
 								<td style="width: 350px"><img src="{{ asset('images/sliders/'.$s->file_image) }}"></td>
-								<td>{!! $s->titulo !!}</td>
+								<td>{{ $s->orden }}</td>
 								<td>
 									<a href=" {{ action('SliderController@edit', ['id' => $s->id, 'seccion' => 'empresa'])}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
 									<a onclick="return confirm('¿Realmente desea eliminar este registro?')"  href=" {{ action('SliderController@eliminar', ['id' => $s->id])}} " class="btn-floating btn-large waves-effect waves-light deep-orange"><i class="fas fa-trash-alt"></i></a>
