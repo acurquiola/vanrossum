@@ -11,7 +11,7 @@
 
 					<div class="li-busqueda">
 						<button type="submit" name="submit" style="padding-bottom: 0px; padding-right: 0px; border-top-width: 0px;padding-left: 0px;background-color: #F8A900;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: white; background-color: transparent!important;">search</i></button>   
-						<input id="buscador" type="search" name="busqueda" placeholder="Estoy buscando..." autocomplete="off" style="margin-bottom: 5px; border-bottom: 1px solid transparent;">
+						<input id="buscador" type="search" name="busqueda" placeholder="Estoy buscando..." autocomplete="off" style="margin-left: 5px; border-bottom: 1px solid transparent;">
 					</div>
 					{!! Form::close() !!}
 
@@ -44,7 +44,7 @@
 				</a>
 				<ul class="item-right right hide-on-med-and-down">
 					<li>
-						<a href="" {{ (\Request::is('/empresa*'))?"id=seccion-active":"" }} >
+						<a href="{{ url('/empresa') }}" {{ (\Request::is('/empresa*'))?"id=seccion-active":"" }} >
 							QUIÉNES SOMOS
 						</a>
 					</li>
@@ -68,7 +68,7 @@
 			<li><a href="  " {{ (\Request::is('productos*'))?"id=seccion-active":"" }}>PRODUCTOS</a></li>
 			<li><a href="  " {{ (\Request::is('destacados*'))?"id=seccion-active":"" }}>DESTACADOS</a></li>
 			<li><a href="  " {{ (\Request::is('novedades*'))?"id=seccion-active":"" }}>NOVEDADES</a></li>
-			<li><a href="  " {{ (\Request::is('empresa*'))?"id=seccion-active":"" }}>QUIÉNES SOMOS</a></li>      
+			<li><a href="{{ url('empresa') }}" {{ (\Request::is('empresa*'))?"id=seccion-active":"" }}>QUIÉNES SOMOS</a></li>      
 			<li><a href=" " {{ (\Request::is('contacto*'))?"id=seccion-active":"" }}>CONTACTO</a></li>     
 			<li><a href=" " {{ (\Request::is('carrito*'))?"id=seccion-active":"" }}>CARRITO</a></li>     
 		</ul>

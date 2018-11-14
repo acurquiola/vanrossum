@@ -13,11 +13,15 @@
 
 
 Route::get('/', 'SeccionHomeController@index')->name('home');
+Route::get('/search', 'SeccionHomeController@buscador');
 
 //Rutas para la gestión de clientes
 Auth::routes();
 
-Route::get('/search', 'SeccionHomeController@buscador');
+//Rutas de secciones
+Route::get('empresa', 'SeccionEmpresaController@index');
+Route::get('novedades', 'SeccionNovedadController@index');
+
 
 Route::prefix('adm')->group(function () {
 
@@ -35,6 +39,9 @@ Route::prefix('adm')->group(function () {
 			Route::get('/informacion/{id}', 'HomeController@edit');
 			Route::put('/informacion/{id}', 'HomeController@update');
 
+			Route::get('/informacion/texto/{id}', 'HomeController@editTexto');
+			Route::put('/informacion/texto/{id}', 'HomeController@updateTexto');
+			
 		//Sliders del Home
 			Route::get('/sliders', 'HomeController@indexSlider');
 			Route::get('/sliders/create', 'HomeController@createSlider');

@@ -88,7 +88,7 @@
 				</div>
 			</div> -->
 		</div>
-		<div class="divider" style="width: 90%; margin-left: 6%; background: #6F6F6F; height: 2px;"></div>
+		<div class="divider" style="width: 90%; margin-left: 6%; background: #A4A4A4; height: 2px;"></div>
 		<div class="row" style="margin:0;">
 			<div class="col s12" id="osole-span" >
 				<span class="right ">BY OSOLE</span>

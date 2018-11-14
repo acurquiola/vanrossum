@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Slider;
+use App\Texto;
+use App\Informacion;
 
 class SeccionHomeController extends Controller
 {
@@ -15,8 +17,11 @@ class SeccionHomeController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::where('seccion', 'home')->orderBy('orden')->get();
-        return view('page.home.index', compact('sliders'));
+        $sliders     = Slider::where('seccion', 'home')->orderBy('orden')->get();
+        $informacion = Informacion::orderBy('orden')->get();
+        $textos      = Texto::first();
+
+        return view('page.home.index', compact('sliders', 'informacion', 'textos'));
     }
 
     public function buscador(Request $request)

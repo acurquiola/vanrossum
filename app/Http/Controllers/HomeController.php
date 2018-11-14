@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Informacion;
+use App\Texto;
 use App\Http\Controllers\Controller;
 use App\Extensions\Helpers;
 use Redirect;
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index(){
         $informacions = Informacion::orderBy('orden')->get();
-        return view('adm.home.informacion.index', compact('informacions'));
+        $textos       = Texto::first();
+        return view('adm.home.informacion.index', compact('informacions', 'textos'));
     }
 
     public function edit($id){
@@ -45,5 +47,24 @@ class HomeController extends Controller
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
+
+    public function editTexto($id){
+        $texto = Texto::find($id);
+        return view('adm.home.informacion.texto.edit', compact('texto'));
+    }
+
+    public function updateTexto(Request $request,$id )
+    {
+        $datos = $request->all();
+        $texto = Texto::find($id);
+        $texto->fill($datos);
+
+        if($texto->save())
+            return redirect('adm/home/informacion/ver')->with('alert', "Registro actualizado exitósamente" );
+        else
+            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+
+    }
+
 
 }

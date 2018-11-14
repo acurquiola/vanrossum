@@ -1,0 +1,21 @@
+.content-empresa, .content-empresa p{
+	font-size: 15px;
+	color: #777777;
+	font-family: 'Montserrat'
+}
+
+.card .card-content{
+	padding: 0px !important;
+	padding-top: 25px;
+	border-top: 2px solid #F8A900;
+	margin-bottom: 7%;
+}
+
+.card .card-content .card-title{
+	color: #B0B0B0;
+	font-size: 18px;
+	font-family: 'Montserrat Light';
+	letter-spacing: 2;
+
+}
+

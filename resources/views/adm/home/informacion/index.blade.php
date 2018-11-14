@@ -5,6 +5,19 @@
 				<h5>Información en HOME</h5>					
 				<div class="divider"></div>
 				<table class="index-table responsive-table ">
+					<tbody>
+						<tr>
+							<td><b>Título</b></td>
+							<td>{{ $textos->home_titulo }}</td>
+							<td rowspan="3"><a href=" {{ action('HomeController@editTexto', $textos->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
+						</tr>
+						<tr>
+							<td><b>Subtítulo</b></td>
+							<td>{{ $textos->home_subtitulo }}</td>								
+						</tr>
+					</tbody>
+				</table>
+				<table class="index-table responsive-table ">
 					<thead>
 						<tr>
 							<th>Imagen</th>

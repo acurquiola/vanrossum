@@ -25,6 +25,9 @@
 
 
 
+
+
+
 #titulo-novedades-home{
 	color: #B0B0B0;
 	font-size: 30px;
@@ -41,28 +44,39 @@
 	font-size: 15px !important; 
 	color: #FFF; 
 	font-family: 'Montserrat';
-
 }
 
-#informacion-titulo-caption{
-	font-family: 'Montserrat Semibold';
-	color: #FFC107;
-	font-size: 32px;
-	padding-top: 25%;
-}
-
-
-#informacion-descripcion-caption{
-	font-family: 'Montserrat Light';
-	color: #FFFFFF;
-	font-size: 18px;
-	padding-top: 15%;
-}
+/*Información del home*/
 
 .informacion-div{
-	height: 247px;
-	overflow: hidden;
+	min-height: 450px;
+	background: #F9F9F9;
+	margin: 0;
 }
+
+#informacion-titulo{
+	font-family: 'Montserrat Semibold';
+	color: #F8A900;
+	font-size: 38px;
+	text-align: center;
+}
+
+
+#informacion-subtitulo{
+	font-family: 'Montserrat';
+	color: #A1A1A1;
+	font-size: 22px;
+	text-align: center;
+	margin-top: -30px;
+}
+
+.nombre-globos{
+	color: #595959;
+	font-family: 'Montserrat Semibold';
+	font-size: 15px
+}
+
+/*Destacados*/
 
 #divider-destacados-home{
 	margin-left: 40%; 

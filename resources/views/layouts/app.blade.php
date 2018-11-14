@@ -24,8 +24,8 @@
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/page/home.css') }}" rel="stylesheet">
-<!--     <link href="{{ asset('css/page/empresa.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/page/calidad.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/page/empresa.css') }}" rel="stylesheet">
+<!--    <link href="{{ asset('css/page/calidad.css') }}" rel="stylesheet">
     <link href="{{ asset('css/page/produccion.css') }}" rel="stylesheet">
     <link href="{{ asset('css/page/novedades.css') }}" rel="stylesheet">
     <link href="{{ asset('css/page/producto.css') }}" rel="stylesheet">
