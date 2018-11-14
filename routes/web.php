@@ -20,7 +20,9 @@ Auth::routes();
 
 //Rutas de secciones
 Route::get('empresa', 'SeccionEmpresaController@index');
-Route::get('novedades', 'SeccionNovedadController@index');
+Route::get('novedades', 'SeccionNovedadesController@index');
+Route::get('/novedades/filtros/{id}', 'SeccionNovedadesController@filter')->name('filtros');
+Route::get('/novedades/ver/{id}', 'SeccionNovedadesController@ver')->name('ver');
 
 
 Route::prefix('adm')->group(function () {
@@ -41,7 +43,7 @@ Route::prefix('adm')->group(function () {
 
 			Route::get('/informacion/texto/{id}', 'HomeController@editTexto');
 			Route::put('/informacion/texto/{id}', 'HomeController@updateTexto');
-			
+
 		//Sliders del Home
 			Route::get('/sliders', 'HomeController@indexSlider');
 			Route::get('/sliders/create', 'HomeController@createSlider');

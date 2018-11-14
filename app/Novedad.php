@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Novedad extends Model
 {
     protected $fillable = [
-        'titulo', 'texto', 'file_image', 'caracteristicas', 'galeria', 'orden'
+        'titulo', 'texto', 'file_image', 'orden'
     ];
 
     public function clasificacion()

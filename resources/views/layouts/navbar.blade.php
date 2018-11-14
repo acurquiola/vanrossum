@@ -33,7 +33,7 @@
 						</a>
 					</li>					
 					<li>
-						<a href="" {{ (\Request::is('/novedades*'))?"id=seccion-active":"" }} >
+						<a href="{{ url('novedades') }}" {{ (\Request::is('/novedades*'))?"id=seccion-active":"" }} >
 							NOVEDADES
 						</a>
 					</li>
@@ -67,12 +67,10 @@
 			<li><a href=" {{ route('home') }} " {{ (\Request::is('/'))?"id=seccion-active":"" }}>INICIO</a></li>
 			<li><a href="  " {{ (\Request::is('productos*'))?"id=seccion-active":"" }}>PRODUCTOS</a></li>
 			<li><a href="  " {{ (\Request::is('destacados*'))?"id=seccion-active":"" }}>DESTACADOS</a></li>
-			<li><a href="  " {{ (\Request::is('novedades*'))?"id=seccion-active":"" }}>NOVEDADES</a></li>
+			<li><a href="{{ url('novedades') }}" {{ (\Request::is('novedades*'))?"id=seccion-active":"" }}>NOVEDADES</a></li>
 			<li><a href="{{ url('empresa') }}" {{ (\Request::is('empresa*'))?"id=seccion-active":"" }}>QUIÉNES SOMOS</a></li>      
 			<li><a href=" " {{ (\Request::is('contacto*'))?"id=seccion-active":"" }}>CONTACTO</a></li>     
 			<li><a href=" " {{ (\Request::is('carrito*'))?"id=seccion-active":"" }}>CARRITO</a></li>     
 		</ul>
-
-
 	</header>
 </div>
