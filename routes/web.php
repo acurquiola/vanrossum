@@ -15,15 +15,27 @@
 Route::get('/', 'SeccionHomeController@index')->name('home');
 Route::get('/search', 'SeccionHomeController@buscador');
 
-//Rutas para la gestión de clientes
-Auth::routes();
-
 //Rutas de secciones
-Route::get('empresa', 'SeccionEmpresaController@index');
-Route::get('novedades', 'SeccionNovedadesController@index');
+
+//Sección de Empresa
+Route::get('/empresa', 'SeccionEmpresaController@index');
+//Sección de Novedades
+Route::get('/novedades', 'SeccionNovedadesController@index');
 Route::get('/novedades/filtros/{id}', 'SeccionNovedadesController@filter')->name('filtros');
 Route::get('/novedades/ver/{id}', 'SeccionNovedadesController@ver')->name('ver');
+//Sección de Contacto
+Route::resource('/contacto', 'SeccionContactoController');
+//Sección de Preguntas
+Route::get('preguntas', 'SeccionPreguntasController@index');
+//Sección de Productos 
+Route::prefix('productos')->group(function () {
+	Route::get('familias', 'SeccionProductoController@index');
+	Route::get('ver', 'SeccionProductoController@show');
+});
+Route::get('/dolar', 'ValorDolarController@index');
 
+//Rutas para la gestión de clientes
+Auth::routes();
 
 Route::prefix('adm')->group(function () {
 
@@ -119,6 +131,11 @@ Route::prefix('adm')->group(function () {
 		Route::get('delete/{id}', 'UserController@eliminar');
 	});
 
+	Route::prefix('general/')->group(function () {
+		Route::get('edit', 'CodPostalController@edit');
+		Route::put('update/{id}', 'CodPostalController@update');
+		Route::post('importExcel', 'CodPostalController@importExcel');
+	});
 
 	//Ruta para la gestión de usuarios 
 	Route::prefix('productos')->group(function () {

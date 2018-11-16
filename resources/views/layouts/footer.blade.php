@@ -39,7 +39,7 @@
 						<a href=" {{ url('/productos')}} " >Novedades</a>
 						</div>
 						<div class="col s12 m6">
-							<a href=" {{ url('/novedades')}} " >Cómo Comprar</a>
+							<a href=" {{ url('/preguntas')}} " >Cómo Comprar</a>
 						</div>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 									<i class="fas fa-map-marker-alt"></i>
 								</div>
 								<div class="col s10">
-									<a target="_blank" href="">{{ $direccion->descripcion }}</a>
+									<a target="_blank" href="https://goo.gl/maps/Fg7NECFuJgu">{{ $direccion->descripcion }}</a>
 								</div>
 							</div>
 						</li>
@@ -86,7 +86,7 @@
 						</li>
 					</ul>
 				</div>
-			</div> -->
+			</div> 
 		</div>
 		<div class="divider" style="width: 90%; margin-left: 6%; background: #A4A4A4; height: 2px;"></div>
 		<div class="row" style="margin:0;">

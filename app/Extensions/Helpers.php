@@ -2,10 +2,13 @@
 
 namespace App\Extensions;
 
+use Goutte\Client;
+
+
 class Helpers
 {
 
- public static function saveImage($file, $route, $id = null)
+	public static function saveImage($file, $route, $id = null)
  	{
  		if ($file) {
             if ($file->isValid()) {
@@ -17,6 +20,17 @@ class Helpers
             }
         }
         return false;
+    }
+
+	public static function dolar(Client $client)
+ 	{
+		$crawler = $client->request('GET', 'http://www.bna.com.ar/Personas');
+		$table   = 'table cotizacion';
+		
+		$dolar   = $crawler->filter("[class='$table']")->filter('tr')->filter('td')->siblings();
+		$dolar   = $dolar->nextAll();
+        return $dolar->text();
+
     }
 
 }

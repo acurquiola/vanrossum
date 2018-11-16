@@ -1,0 +1,204 @@
+
+.container-fluid-secciones{
+    width: 85%
+}
+
+
+
+
+.container-fluid-secciones{
+    width: 85%
+}
+.collapsible{
+     border-top: none;
+     border-right: none;
+     border-left: none;
+}
+
+.collapsible-header{
+    border-bottom: 2px solid #02316f;
+    padding-bottom: 0.2rem;
+    font-weight: bold;
+}
+
+.collapsible-body{
+        padding: 0.1rem 2rem;
+        border-bottom: none;
+
+}
+
+.collapsible-body ul:last-child(){
+    margin-bottom: 30px;
+    
+}
+
+
+
+.familia-productos, #subfamilia-productos{
+    margin-bottom: 15%;
+}
+
+
+.familia-productos, #subfamilia-productos{
+	width: 270px;
+	height: 285px;
+	overflow: hidden;
+    border: 1px solid #ECECEC;
+    border-radius: 10px;
+}
+
+.familia-productos{
+    margin-top: 5%;
+}
+
+.efecto{
+    position:absolute;
+    opacity: 0;
+    background-color: transparent;
+    height: 100%;
+    z-index: 6;
+    mix-blend-mode: multiply;
+}    
+
+
+.efecto:hover{
+    opacity: 1;
+    transition: 1s;
+}
+
+#productos-collapsible, #productos-collapsible-header, #productos-collapsible-body{
+    border: 1px solid #EFF2F7;
+}
+
+#productos-collapsible-header{
+    font-size: 15px;
+    color: #454545;
+    padding: 3%;
+    padding-left: 8%
+}
+
+#productos-collapsible-body{
+    padding: 5%;
+    padding-left: 10%;
+    background: #c2c2c21c !important;
+}
+
+#productos-collapsible-body a{
+    font-size: 11px;
+    color: #A3A3A3;
+}
+
+.breadcrumb-productos{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.breadcrumb-productos a{
+    font-family: 'Titillium';
+    color: #595959;
+    font-size: 14px;
+}
+
+.familia-active, .subfamilia-active{
+    color: #F14715 !important;
+}
+#image-subfamilias-card-content, #image-familias-card-content{
+    background: #ECECEC;
+    border: 1px solid #EFF2F7;
+    width: 268px;
+}
+
+
+#image-subfamilias-card-content-title, #image-familias-card-content-title{
+    font-size: 17px;
+    color: #797979;
+
+}
+
+#image-familias-card-content{
+    padding: 4%;
+}
+
+#productos-show-nombre{
+    font-family: 'Titillium Bold';
+    font-size: 28px;
+    margin: 0;
+}
+
+#productos-show-subfamilia{
+    font-family: 'Titillium Semibold';
+    font-size: 22px;
+    color: #A3A3A3;
+    margin: 0;
+}
+
+#productos-show-descripcion{
+    font-family: 'Titillium Light';
+    font-size: 17px;
+    padding-bottom: 3%;
+}
+
+#titulo-caracteristicas-productos{
+    color: #F34600;
+    font-family: 'Titillium Bold'
+    font-size: 20px;
+}
+
+#caracteristicas-productos p{
+    font-family: 'Titillium Light';
+    font-size: 17px;
+}
+
+#codigo-productos{
+    background: #ECECEC;
+    padding-bottom: 4%
+}
+
+
+#codigo-productos p{
+    color: #F34600;
+    font-size: 17px;
+    font-family: 'Titillium Semibold';
+    margin-bottom: 0%;
+}
+
+
+#codigo-productos span{
+    font-size: 15px;
+    font-family: 'Titillium';
+    padding-left: 10%
+}
+
+.img-productos{
+  overflow: hidden;
+}
+
+.img-productos img{
+  height: auto;
+}
+
+
+@media(max-width: 992px){
+    #familias-row{
+        align-items: center;
+        text-align: center;
+        margin-left: 25%;
+    }
+}
+
+@media(max-width: 600px){
+	#familias-row{
+        align-items: center;
+        text-align: center;
+        margin-left: 0% !important;
+	}
+}
+
+
+@supports(object-fit: cover){
+    #subfamilia-productos img{
+        max-width: 268px;
+        object-fit: cover;
+        object-position: center center;
+    }
+}

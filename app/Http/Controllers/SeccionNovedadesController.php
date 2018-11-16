@@ -11,8 +11,9 @@ class SeccionNovedadesController extends Controller
 {
 	public function index()
 	{	
-		$novedades        = Novedad::orderBy('clasificacion_id')->orderBy('orden')->get();
-		$categorias       = Clasificacion::orderBy('orden')->get();
+		$novedades  = Novedad::orderBy('clasificacion_id')->orderBy('orden')->get();
+		$categorias = Clasificacion::orderBy('orden')->get();
+		$seccion    = 'Novedades';
 
 	    return view('page.novedades.index', compact('novedades', 'seccion', 'metadato', 'categorias'));
 	}
@@ -24,6 +25,7 @@ class SeccionNovedadesController extends Controller
 		$metadato         = Metadato::where('seccion', $seccion)->first();
 		$categorias       = Clasificacion::orderBy('orden')->get();
 		$categoria_activa = Clasificacion::find($id);
+		$seccion          = 'Novedades';
 
 	    return view('page.novedades.filter', compact('novedades', 'seccion', 'metadato', 'categorias', 'categoria_activa'));
 	}
@@ -34,6 +36,7 @@ class SeccionNovedadesController extends Controller
 		$seccion    = 'Novedades';
 		$metadato   = Metadato::where('seccion', $seccion)->first();
 		$categorias = Clasificacion::orderBy('orden')->get();
+		$seccion    = 'Novedades';
 
 	    return view('page.novedades.show', compact('novedad', 'seccion', 'metadato', 'categorias', 'categoria_activa'));
 

@@ -1,0 +1,14 @@
+.contacto-icon i{
+    position: relative;
+    margin-top: 5px;
+    color: #009BDB;
+}
+
+.contacto-text a{
+	color: #595959;
+	font-family: 'Montserrat Semibold';
+}
+
+.contacto-info{
+	margin-top: 15%;
+}

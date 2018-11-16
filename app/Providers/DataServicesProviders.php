@@ -13,18 +13,18 @@ class DataServicesProviders extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['adm.layouts.sidebar', 
-                          'adm.auth.login',
-                          'adm.layouts.navbar',
-                          'layouts.navbar'], function ($view) {
-            $logos = \App\Logo::where('ubicacion', 'navbar')->first();
-            $view->with(compact('logos'));
-        });
+    	view()->composer(['adm.layouts.sidebar', 
+			    		  'adm.auth.login',
+			    		  'adm.layouts.navbar',
+			    		  'layouts.navbar'
+			    		], function ($view) {
+    			$logos = \App\Logo::where('ubicacion', 'navbar')->first();
+    			$view->with(compact('logos'));
+    		});
 
-        view()->composer(['layouts.footer'], function ($view) {
-            /*$informacion = \App\Dato::first();
-            $caracteres  = array("(", ")", "-", " ", "+");
-            $numeroWs    = str_replace($caracteres, "", $informacion->whatsapp);*/
+    	view()->composer(['layouts.footer',
+    					  'page.contacto.partials.form'
+    					], function ($view) {
             $direccion = \App\Dato::where('tipo', 'direccion')->first();
             $email     = \App\Dato::where('tipo', 'email')->first();
             $telefono  = \App\Dato::where('tipo', 'telefono')->first();
@@ -35,10 +35,10 @@ class DataServicesProviders extends ServiceProvider
             $view->with(compact('direccion', 'email', 'telefono', 'mapa', 'facebook', 'instagram'));
         });
 
-        view()->composer(['layouts.footer'], function ($view) {
-            $logos    = \App\Logo::where('ubicacion', 'footer')->first();
-            $view->with(compact('logos'));
-        });
+    	view()->composer(['layouts.footer'], function ($view) {
+    		$logos    = \App\Logo::where('ubicacion', 'footer')->first();
+    		$view->with(compact('logos'));
+    	});
     }
 
     /**

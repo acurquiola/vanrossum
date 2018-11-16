@@ -22,9 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call(UnidadsTableSeeder::class);
         $this->call(EmpresasTableSeeder::class);
         $this->call(CategoriasTableSeeder::class);
+        $this->call(PreguntasTableSeeder::class);
         $this->call(InformacionsTableSeeder::class);
         $this->call(TextosTableSeeder::class);
         $this->call(ClasificacionsTableSeeder::class);
         $this->call(NovedadesTableSeeder::class);
+        $this->call(ArchivosTableSeeder::class);
     }
 }

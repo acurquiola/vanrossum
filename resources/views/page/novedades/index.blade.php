@@ -7,6 +7,9 @@
 
 
 <div class="container">
+
+	@include('page.partials.header-secciones')
+
 	
 	<div class="row">
 		

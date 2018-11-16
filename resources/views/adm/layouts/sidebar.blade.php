@@ -34,6 +34,15 @@
 					</li>
 				</ul>
 			 	<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/general*'))?"seccion-activa":"" }}" tabindex="0" ><i class="fas fa-clipboard-list"></i>Códigos Postales</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/general*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href="{{ action('CodPostalController@edit') }}" ><i class="material-icons">navigate_next</i>Cargar Archivo</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			 	<ul class="collapsible collapsible-accordion">
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/preguntas*'))?"seccion-activa":"" }}" tabindex="0" ><i class="fas fa-question-circle"></i>Preguntas Frecuentes</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/preguntas*'))?"style=display:block;":"" }}>
 							<ul>
