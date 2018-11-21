@@ -29,13 +29,13 @@ class ProductoController extends Controller
 
     public function create()
     {
-		$familias    = Familia::where('nivel', '<=', '1')->orderBy('orden')->get();
+		$familias    = Familia::orderBy('orden')->get();
+
         return view('adm.productos.create', compact('familias'));
     }
 
     public function store(Request $request)
     {
-    	dd($request->all());
 		$datos     = $request->all();
 		$producto  = new Producto;
 		$file_save = Helpers::saveImage($request->file('file_image'), 'productos');

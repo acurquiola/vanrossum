@@ -25,4 +25,9 @@ class Producto extends Model
 	{
 	    return $this->hasMany('App\Descuento');
 	}
+    
+    public function galerias()
+    {
+        return $this->hasMany('App\Galeria');
+    }
 }

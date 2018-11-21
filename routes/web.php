@@ -30,7 +30,9 @@ Route::get('preguntas', 'SeccionPreguntasController@index');
 //Sección de Productos 
 Route::prefix('productos')->group(function () {
 	Route::get('familias', 'SeccionProductoController@index');
-	Route::get('ver', 'SeccionProductoController@show');
+	Route::get('listar/{id}/{padre}', 'SeccionProductoController@listar');
+	Route::get('show/{id}/{padre}', 'SeccionProductoController@show');
+
 });
 Route::get('/dolar', 'ValorDolarController@index');
 
@@ -180,6 +182,15 @@ Route::prefix('adm')->group(function () {
 		Route::prefix('unidades/')->group(function () {
 			Route::resource('unidad', 'UnidadController')->except(['show']);
 			Route::get('delete/{id}', 'UnidadController@eliminar');
+		});
+
+		Route::prefix('galerias/')->group(function () {
+			Route::get('index/{id}', 'GaleriaController@index');
+			Route::get('create/{id}', 'GaleriaController@create');
+			Route::post('store', 'GaleriaController@store');
+			Route::get('edit/{id}', 'GaleriaController@edit');
+			Route::put('update/{id}', 'GaleriaController@update');
+			Route::get('delete/{id}', 'GaleriaController@eliminar');
 		});
 
 	});

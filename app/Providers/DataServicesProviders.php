@@ -35,9 +35,17 @@ class DataServicesProviders extends ServiceProvider
             $view->with(compact('direccion', 'email', 'telefono', 'mapa', 'facebook', 'instagram'));
         });
 
-    	view()->composer(['layouts.footer'], function ($view) {
-    		$logos    = \App\Logo::where('ubicacion', 'footer')->first();
-    		$view->with(compact('logos'));
+        view()->composer(['layouts.footer'], function ($view) {
+            $logos    = \App\Logo::where('ubicacion', 'footer')->first();
+            $view->with(compact('logos'));
+        });
+
+    	view()->composer(['page.productos.partials.menu'], function ($view) {
+            $familias    = \App\Familia::where('nivel', '1')->orderBy('orden')->get();
+            $subfamilias = \App\Familia::with('subfamilias')->where('nivel', '>', '2')->orderBy('orden')->get();
+            $productos   = \App\Producto::orderBy('orden')->get();
+
+         	$view->with(compact('familias', 'subfamilias', 'productos', 'nivel', 'first_nivel'));
     	});
     }
 

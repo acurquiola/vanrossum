@@ -3,9 +3,6 @@
     width: 85%
 }
 
-
-
-
 .container-fluid-secciones{
     width: 85%
 }
@@ -32,12 +29,15 @@
     
 }
 
-
-
 .familia-productos, #subfamilia-productos{
     margin-bottom: 15%;
 }
 
+.producto-nombre{
+    color: #595959;
+    font-family: 'Montserrat Semibold';
+    margin-top: -25px;
+}
 
 .familia-productos, #subfamilia-productos{
 	width: 270px;
@@ -67,25 +67,32 @@
 }
 
 #productos-collapsible, #productos-collapsible-header, #productos-collapsible-body{
-    border: 1px solid #EFF2F7;
+    border-bottom: 1px solid #EFF2F7;
 }
 
 #productos-collapsible-header{
-    font-size: 15px;
-    color: #454545;
+    font-size: 13px;
+    font-family: 'Montserrat Semibold';
+    color: #484848;
     padding: 3%;
-    padding-left: 8%
+    padding-left: 8%;
+    background: #c2c2c21c !important;
+}
+
+#productos-collapsible-header i{
+    color: #B8BFD2 !important;
 }
 
 #productos-collapsible-body{
     padding: 5%;
     padding-left: 10%;
-    background: #c2c2c21c !important;
 }
 
 #productos-collapsible-body a{
     font-size: 11px;
     color: #A3A3A3;
+    font-family: 'Montserrat Semibold';
+    letter-spacing: 1;
 }
 
 .breadcrumb-productos{
@@ -94,14 +101,11 @@
 }
 
 .breadcrumb-productos a{
-    font-family: 'Titillium';
+    font-family: 'Montserrat';
     color: #595959;
     font-size: 14px;
 }
 
-.familia-active, .subfamilia-active{
-    color: #F14715 !important;
-}
 #image-subfamilias-card-content, #image-familias-card-content{
     background: #ECECEC;
     border: 1px solid #EFF2F7;
@@ -120,40 +124,23 @@
 }
 
 #productos-show-nombre{
-    font-family: 'Titillium Bold';
+    font-family: 'Montserrat Semibold';
     font-size: 28px;
     margin: 0;
 }
 
-#productos-show-subfamilia{
-    font-family: 'Titillium Semibold';
+#productos-show-codigo{
+    font-family: 'Montserrat Semibold';
     font-size: 22px;
-    color: #A3A3A3;
+    color: #F8A900;
     margin: 0;
 }
 
 #productos-show-descripcion{
-    font-family: 'Titillium Light';
+    font-family: 'Montserrat Light';
     font-size: 17px;
     padding-bottom: 3%;
 }
-
-#titulo-caracteristicas-productos{
-    color: #F34600;
-    font-family: 'Titillium Bold'
-    font-size: 20px;
-}
-
-#caracteristicas-productos p{
-    font-family: 'Titillium Light';
-    font-size: 17px;
-}
-
-#codigo-productos{
-    background: #ECECEC;
-    padding-bottom: 4%
-}
-
 
 #codigo-productos p{
     color: #F34600;
@@ -176,6 +163,37 @@
 .img-productos img{
   height: auto;
 }
+
+.seccion-block{
+    display: block;
+}
+
+#titulo-descuentos{
+    font-family: 'Montserrat';
+    letter-spacing: 2;
+    font-size: 18px;
+    color: #B0B0B0;
+}
+
+#descuentos-row{
+    background: url('../../images/productos/background-descuentos.png');
+    border-top: 2px solid #F8A900;
+
+}
+
+#descuentos-table th{
+    font-family: 'Montserrat Bold';
+    color: #595959;
+    font-size: 15px;
+}
+
+
+#descuentos-table tr td{
+    font-family: 'Montserrat Light';
+    color: #595959;
+    font-size: 15px;
+}
+
 
 
 @media(max-width: 992px){

@@ -10,7 +10,7 @@ class Familia extends Model
     	'nombre', 'file_image', 'orden' 
     ];
 
-    public function familia()
+    public function subfamilias()
 	{
 	    return $this->hasMany('App\Familia', 'familia_id');
 	}

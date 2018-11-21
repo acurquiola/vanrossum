@@ -41,7 +41,7 @@
 
 		<ul class="sidenav" id="mobile-demo">
 			<li><a href=" {{ route('home') }} " {{ (\Request::is('/'))?"id=seccion-active":"" }}>INICIO</a></li>
-			<li><a href="  " {{ (\Request::is('productos*'))?"id=seccion-active":"" }}>PRODUCTOS</a></li>
+			<li><a href=" {{ url('/productos/familias')}} " {{ (\Request::is('productos*'))?"id=seccion-active":"" }}>PRODUCTOS</a></li>
 			<li><a href="  " {{ (\Request::is('destacados*'))?"id=seccion-active":"" }}>DESTACADOS</a></li>
 			<li><a href="{{ url('novedades') }}" {{ (\Request::is('novedades*'))?"id=seccion-active":"" }}>NOVEDADES</a></li>
 			<li><a href="{{ url('empresa') }}" {{ (\Request::is('empresa*'))?"id=seccion-active":"" }}>QUIÉNES SOMOS</a></li>      

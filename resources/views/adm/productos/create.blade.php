@@ -64,24 +64,13 @@
 								</select>
 							</div>
 
-							<div class="input-field col s5">
-								<select class="materialSelect" id="subfamilia" name="subfamilia_id">
-									@foreach ($subfamilias as $s )
-									<option value="{{ $s->id }}" >{{ ucwords($s->nombre) }} </option>
-									@endforeach
-								</select>
-							</div>
-
 							<div class="input-field col s2">
 								<i class="material-icons prefix">keyboard_arrow_right</i>
 								<input id="icon_prefix" type="text" class="validate" name="orden"  >
 								<label for="icon_prefix">Orden</label>
 							</div>
-
 						</div>
 						<div class="row">
-							
-
 							<div class="right">
 								<a href="{{ action('ProductoController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
 								<button class="btn waves-effect waves-light btn-color" type="submit" name="action">Submit
@@ -90,7 +79,6 @@
 							</div>
 						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>
