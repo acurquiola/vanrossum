@@ -178,7 +178,17 @@
 #descuentos-row{
     background: url('../../images/productos/background-descuentos.png');
     border-top: 2px solid #F8A900;
+}
 
+#presentaciones-row{
+    margin-bottom: 5%;
+    background: #F9F9F9;
+}
+
+#titulo-presentaciones{
+    font-family: 'Montserrat Semibold';
+    font-size: 18px;
+    color: #0099DE;
 }
 
 #descuentos-table th{
@@ -187,13 +197,20 @@
     font-size: 15px;
 }
 
-
-#descuentos-table tr td{
+#descuentos-table tr td, #presentaciones-table tr td{
     font-family: 'Montserrat Light';
     color: #595959;
     font-size: 15px;
 }
 
+#presentaciones-table tr td{
+    padding: 0px 5px !important;
+}
+
+#cantidad-td{
+    color: #0099DE !important;
+    font-family: 'Montserrat Semibold' !important;
+}
 
 
 @media(max-width: 992px){

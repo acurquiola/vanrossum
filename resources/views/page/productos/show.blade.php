@@ -42,6 +42,30 @@
 
 				</div>
 
+
+				@if($producto->presentaciones->count() > 0)
+
+					<div class="row" id="presentaciones-row">
+						<div class="col s12">
+							<p id="titulo-presentaciones">Presentaciones</p>
+							<table id="presentaciones-table" class="centered">
+								<tbody>
+									@foreach($producto->presentaciones as $p)
+										<tr>
+											<td>{{ $p->cantidad}} {{$p->unidad->abreviacion }}</td>
+											<td>{{ $p->precio }}</td>
+											<td><input type="number" style="width: 30px" name="cantidad[]"></td>
+											<td></td>
+										</tr>
+									@endforeach
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+					
+				@endif
+
 				@if($producto->descuentos->count() > 0)
 
 					<div class="row" id="descuentos-row">
@@ -69,7 +93,7 @@
 										<tr>
 											<td>{{$d->desde->cantidad}}</td>
 											<td>{{$d->hasta->cantidad}}</td>
-											<td>{{$d->descuento}}</td>
+											<td id="cantidad-td">{{$d->descuento}}%</td>
 											<td></td>
 										</tr>
 									@endforeach
