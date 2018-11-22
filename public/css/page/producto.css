@@ -213,6 +213,22 @@
 }
 
 
+#cantidad-presentaciones-td{
+    color: #595959 !important;
+    font-family: 'Montserrat Semibold' !important;
+}
+
+#titulo-iva{
+    font-size: 11px;
+    font-family: 'Montserrat Italic';
+}
+
+#total, #simbolo-moneda{
+    color: #2D2D2D;
+    font-family: 'Montserrat' !important;
+    font-size: 30px;
+}
+
 @media(max-width: 992px){
     #familias-row{
         align-items: center;
