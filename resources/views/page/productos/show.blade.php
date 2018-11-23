@@ -115,8 +115,7 @@
 									<td>{{$d->hasta->cantidad}}</td>
 									<td id="cantidad-td">{{$d->descuento}}%</td>
 									<td>
-										<span>$</span>
-										<span id="monto{{$d->id}}" class="left">0.00</span></td>
+										<span id="monto{{$d->id}}" data-monto="0" class="center">$0.00</span></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -165,6 +164,7 @@
 				/*Cálculo del descuento*/
 
 
+				var descuento_total = 0;
 				$('#descuentos-table tbody tr').each(function(){
 					var desde     = $(this).data('desde') || 0;
 					var hasta     = $(this).data('hasta') || 0;
@@ -178,12 +178,13 @@
 
 						if(presentacion >= desde && presentacion <= hasta){
 							monto = 0;
-							monto = ((precio * cantidad)*descuento)/100;
-							$('#monto'+id).text(monto);
+							monto = precio * cantidad-((precio * cantidad)*descuento)/100;
+							$('#monto'+id).text('$'+monto);
+							$('#monto'+id).data('monto', monto);
 						}
+
 					});
 				});
-
 			});
 
 		});
