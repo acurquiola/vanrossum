@@ -17,12 +17,12 @@
 				<h5>Crear</h5>					
 				<div class="divider"></div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<i class="material-icons prefix">keyboard_arrow_right</i>
 					<input id="icon_prefix" type="text" class="validate" name="cantidad" >
 					<label for="icon_prefix">Cantidad</label>
 				</div>
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<select class="materialSelect" id="unidad" name="unidad_id">
 						@foreach ($unidades as $u )
 							<option value="{{ $u->id }}" >{{ ucwords($u->abreviacion) }} </option>
@@ -30,13 +30,19 @@
 					</select>
 				</div>
 
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<i class="material-icons prefix">keyboard_arrow_right</i>
 					<input id="icon_prefix" type="text" class="validate" name="precio" >
+					<label for="icon_prefix">Precio (Pesos)</label>
+				</div>
+
+				<div class="input-field col s3">
+					<i class="material-icons prefix">keyboard_arrow_right</i>
+					<input id="icon_prefix" type="text" class="validate" name="precio" value="0" >
 					<label for="icon_prefix">Precio (USD)</label>
 				</div>
 
-
+				<input type="hidden" value="{{ $dolar }}" name="precio_dolar">
 
 				<div class="right">
 				<a href="{{ action('PresentacionController@index', $producto->id) }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
@@ -61,6 +67,19 @@
 		M.AutoInit();
 		$('.collapsible').collapsible();
 		$('select').formSelect();  
+
+		$('.cantidad-input').on("change",function () {
+			var total    = 0;
+
+			$('.cantidad-input').each(function(){
+				precio       = parseFloat($(this).data('precio')) || 0;
+				cantidad     = parseFloat($(this).val()) || 0;
+				total        = total + precio*cantidad;
+			});
+
+			
+			$('#total').text(total);
+		});
 	});
 </script>
 

@@ -59,7 +59,7 @@
 								<tr>
 									<td id="cantidad-presentaciones-td">{{ $p->cantidad}} {{$p->unidad->abreviacion }}</td>
 									<td>${{ $p->precio }}</td>
-									<td class="right"><input type="number" class="cantidad-input" data-precio="{{ $p->precio }}" min="0" style="width: 50px" name="cantidad[]" value="0"></td>
+									<td class="right"><input type="number" class="cantidad-input" data-precio="{{ $p->precio }}" data-presentacion="{{ $p->cantidad }}" min="0" style="width: 50px" name="cantidad[]" value="0"></td>
 									<td></td>
 								</tr>
 								@endforeach
@@ -104,17 +104,19 @@
 										% Descuento
 									</th>
 									<th>
-										Precio
+										Monto
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($producto->descuentos as $d)
-								<tr>
+								<tr data-id="{{ $d->id }}" data-desde="{{ $d->desde->cantidad }}"  data-hasta="{{ $d->hasta->cantidad }}"  data-descuento="{{ $d->descuento }}" >
 									<td>{{$d->desde->cantidad}}</td>
 									<td>{{$d->hasta->cantidad}}</td>
 									<td id="cantidad-td">{{$d->descuento}}%</td>
-									<td></td>
+									<td>
+										<span>$</span>
+										<span id="monto{{$d->id}}" class="left">0.00</span></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -133,11 +135,6 @@
 	@include('layouts.script')
 	<script>
 
-		function suma(a,b){
-			resultado = a+b;
-			return resultado;
-		}
-
 		$(document).ready(function(){  
 			$('.materialboxed').materialbox();
 			$( ".miniatura-img" ).click(function() {
@@ -148,28 +145,12 @@
 				height: 400,
 			});
 
-			/*Cálculo del total*/
-
-			/*$(".cantidad-input").change(function() {
-				var cantidad = parseInt($(this).val(), 10) || 0;
-				var precio   = parseFloat($(this).data('precio')) || 0;
-				
-				var monto    = parseInt($( ".monto-input" ).val());
-				
-				var aux      = cantidad*precio;
-
-
-				var total    = suma(monto,aux);
-				
-				$( ".monto-input" ).val(total);
-
-
-			});*/
-
 
 
 			$('.cantidad-input').on("change",function () {
 				var total    = 0;
+
+				/*Cálculo del total*/
 
 				$('.cantidad-input').each(function(){
 					precio       = parseFloat($(this).data('precio')) || 0;
@@ -179,7 +160,32 @@
 
 				
 				$('#total').text(total);
+
+
+				/*Cálculo del descuento*/
+
+
+				$('#descuentos-table tbody tr').each(function(){
+					var desde     = $(this).data('desde') || 0;
+					var hasta     = $(this).data('hasta') || 0;
+					var descuento = $(this).data('descuento') || 0;
+					var id        = $(this).data('id');
+
+					$('.cantidad-input').each(function(){
+						var presentacion = parseFloat($(this).data('presentacion'));
+						var precio       = parseFloat($(this).data('precio')) || 0;
+						var cantidad     = parseFloat($(this).val()) || 0;
+
+						if(presentacion >= desde && presentacion <= hasta){
+							monto = 0;
+							monto = ((precio * cantidad)*descuento)/100;
+							$('#monto'+id).text(monto);
+						}
+					});
+				});
+
 			});
+
 		});
 
 	</script>

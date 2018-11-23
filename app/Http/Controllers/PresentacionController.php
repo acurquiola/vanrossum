@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Presentacion;
 use App\Producto;
 use App\Unidad;
+use Goutte\Client;
+use App\Extensions\Helpers;
 
 class PresentacionController extends Controller
 {
@@ -28,11 +30,13 @@ class PresentacionController extends Controller
         return view('adm.productos.presentaciones.index', compact('presentaciones', 'producto'));
     }
 
-    public function create($id)
+    public function create($id, Client $client)
     {
         $producto = Producto::find($id);
         $unidades = Unidad::all();
-        return view('adm.productos.presentaciones.create', compact('producto','unidades'));
+        $cliente  = New Client;
+        $dolar    = Helpers::dolar($cliente);
+        return view('adm.productos.presentaciones.create', compact('producto','unidades', 'dolar'));
     }
 
     public function store(Request $request, $id)

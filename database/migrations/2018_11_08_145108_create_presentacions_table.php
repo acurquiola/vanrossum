@@ -17,6 +17,7 @@ class CreatePresentacionsTable extends Migration
             $table->increments('id');
             $table->string('cantidad')->nullable();
             $table->string('precio')->nullable();
+            $table->string('precio_dolar')->nullable();
             $table->unsignedInteger('unidad_id');
             $table->foreign('unidad_id')->references('id')->on('unidads')->onDelete('cascade');  
             $table->unsignedInteger('producto_id')->nullable();

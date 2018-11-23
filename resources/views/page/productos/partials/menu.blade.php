@@ -30,6 +30,16 @@
 						</div>
 					@empty
 					@endforelse
+					@forelse($f->productos as $p)
+						<div class="collapsible-body valign-wrapper {{ ($familia_padre->id == $p->familia_id)?'familia-active':'' }}" 
+							 id="productos-collapsible-body" 
+							 @if($familia_padre->id == $p->familia_id) 
+							 	style="display:block;" 
+							 @endif>
+							<a href="{{action('SeccionProductoController@show', ['id' => $p->id, 'padre' => $p->familia_id])}}">{{ mb_strtoupper($p->nombre) }}</a>
+						</div>
+					@empty
+					@endforelse
 				</li>
 			@endforeach
 		</ul>
