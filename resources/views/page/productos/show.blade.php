@@ -90,7 +90,12 @@
 
 				<div class="row" id="descuentos-row">
 					<div class="col s12">
-						<p id="titulo-descuentos">DESCUENTOS</p>
+						<div class="col s10">
+							<p id="titulo-descuentos">DESCUENTOS</p>
+						</div>
+						<div class="col s2">
+							<img class="right" src="{{asset('images/descuento.png')}}">
+						</div>
 						<table id="descuentos-table" class="centered">
 							<thead>
 								<tr>
@@ -115,16 +120,28 @@
 									<td>{{$d->hasta->cantidad}}</td>
 									<td id="cantidad-td">{{$d->descuento}}%</td>
 									<td>
-										<span id="monto{{$d->id}}" data-monto="0" class="center">$0.00</span></td>
+										<span id="monto{{$d->id}}" class="center monto-descuento">$0.00</span>
+									</td>
 								</tr>
 								@endforeach
 							</tbody>
+							<tfoot >
+								<tr style="border-bottom-color: #F9F9F9 !important">
+									<td colspan="4">
+										<div class="right" style="margin-right: 55px">
+											<strong>
+												<span id="simbolo-moneda-descuento">Ahorras $</span>
+												<span id="descuento_total" class="right">0.00</span>
+											</strong>
+										</div>
+									</td>
+								</tr>								
+							</tfoot>
 						</table>
 
 					</div>
 				</div>
 				@endif
-				
 			</div>	
 		</div>
 	</div>
@@ -147,22 +164,8 @@
 
 
 			$('.cantidad-input').on("change",function () {
-				var total    = 0;
-
-				/*Cálculo del total*/
-
-				$('.cantidad-input').each(function(){
-					precio       = parseFloat($(this).data('precio')) || 0;
-					cantidad     = parseFloat($(this).val()) || 0;
-					total        = total + precio*cantidad;
-				});
-
-				
-				$('#total').text(total);
-
 
 				/*Cálculo del descuento*/
-
 
 				var descuento_total = 0;
 				$('#descuentos-table tbody tr').each(function(){
@@ -184,7 +187,28 @@
 						}
 
 					});
+
+					var descuento   = $('#monto'+id).data('monto');
+					descuento_total += descuento;
+
+					$('#total').text(descuento_total);
+
 				});
+
+				var total    = 0;
+
+				/*Cálculo del total*/
+
+				$('.cantidad-input').each(function(){
+					precio       = parseFloat($(this).data('precio')) || 0;
+					cantidad     = parseFloat($(this).val()) || 0;
+					total        = total + precio*cantidad;
+				});
+
+				
+				$('#descuento_total').text(total-descuento_total);
+
+
 			});
 
 		});
