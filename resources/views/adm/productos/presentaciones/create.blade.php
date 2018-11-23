@@ -30,11 +30,11 @@
 					</select>
 				</div>
 
-				<div class="input-field col s3">
+		<!-- 		<div class="input-field col s3">
 					<i class="material-icons prefix">keyboard_arrow_right</i>
 					<input id="icon_prefix" type="text" class="validate" name="precio" >
 					<label for="icon_prefix">Precio (Pesos)</label>
-				</div>
+				</div> -->
 
 				<div class="input-field col s3">
 					<i class="material-icons prefix">keyboard_arrow_right</i>

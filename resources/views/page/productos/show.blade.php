@@ -75,8 +75,13 @@
 										</div>
 									</td>
 								</tr>
-								<tr >										
+								<tr  style="border-bottom-color: #F9F9F9 !important">										
 									<td colspan="3"><p id="titulo-iva" class="right">Precio Final IVA incluido</p></td>
+								</tr>	
+								<tr >										
+									<td colspan="3" >									
+										<a id="estandar-btn" class="waves-effect waves-light btn right z-depth-0" ><i class="material-icons left">shopping_cart</i>AÑADIR AL CARRITO</a>
+									</td>
 								</tr>									
 							</tfoot>
 						</table>
@@ -94,7 +99,7 @@
 							<p id="titulo-descuentos">DESCUENTOS</p>
 						</div>
 						<div class="col s2">
-							<img class="right" src="{{asset('images/descuento.png')}}">
+							<img class="right" src="{{asset('images/productos/descuento.png')}}">
 						</div>
 						<table id="descuentos-table" class="centered">
 							<thead>
@@ -190,8 +195,7 @@
 
 					var descuento   = $('#monto'+id).data('monto');
 					descuento_total += descuento;
-
-					$('#total').text(descuento_total);
+					$('#descuento_total').text(descuento_total);
 
 				});
 
@@ -202,11 +206,11 @@
 				$('.cantidad-input').each(function(){
 					precio       = parseFloat($(this).data('precio')) || 0;
 					cantidad     = parseFloat($(this).val()) || 0;
-					total        = total + precio*cantidad;
+					presentacion = parseFloat($(this).data('presentacion'));
+					total        = total + (precio*cantidad*presentacion);
 				});
 
-				
-				$('#descuento_total').text(total-descuento_total);
+				$('#total').text(total-descuento_total);
 
 
 			});
