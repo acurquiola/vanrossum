@@ -32,8 +32,15 @@ Route::prefix('productos')->group(function () {
 	Route::get('familias', 'SeccionProductoController@index');
 	Route::get('listar/{id}/{padre}', 'SeccionProductoController@listar');
 	Route::get('show/{id}/{padre}', 'SeccionProductoController@show');
-
 });
+
+
+//Sección de Productos 
+Route::get('carrito', 'SeccionPedidoController@index');
+Route::post('agregar-carrito', 'SeccionPedidoController@store');
+Route::GET('consultar-monto', 'SeccionPedidoController@consultarMontoEnvio');
+Route::post('confirmar', 'SeccionPedidoController@confirmar');
+
 Route::get('/dolar', 'ValorDolarController@index');
 
 //Rutas para la gestión de clientes
@@ -83,6 +90,10 @@ Route::prefix('adm')->group(function () {
 
 	//Ruta para la gestión de metadatos
 	Route::resource('metadatos', 'MetadatoController');
+
+
+	//Ruta para la gestión de metadatos
+	Route::resource('cuentas', 'CuentaController');
 
 	//Ruta para la gestión de usuarios 
 	Route::prefix('empresa/')->group(function () {
@@ -139,7 +150,7 @@ Route::prefix('adm')->group(function () {
 		Route::post('importExcel', 'CodPostalController@importExcel');
 	});
 
-	//Ruta para la gestión de usuarios 
+	//Ruta para la gestión de productos 
 	Route::prefix('productos')->group(function () {
 		Route::resource('familias', 'FamiliaController');
 		Route::get('familias/delete/{id}', 'FamiliaController@eliminar');

@@ -182,4 +182,10 @@ header .li-busqueda {
     nav .brand-logo{
         top: 20px;
     }
+
+    #seccion-active,#header ul a:hover{
+        border: 0 !important;
+        margin: 0 !important;
+        background-color: #EEEEEE !important;
+    }
 }

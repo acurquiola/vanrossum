@@ -12,7 +12,7 @@ class Presentacion extends Model
 
     public function producto()
     {
-        return $this->belongsTo('App\Producto', 'id', 'producto_id');
+        return $this->belongsTo('App\Producto');
     }    
 
     public function unidad()
@@ -29,4 +29,9 @@ class Presentacion extends Model
     {
     	return $this->belongsTo('App\Descuento', 'hasta_id');
     }   
+    
+    public function compras()
+    {
+        return $this->belongsToMany('App\Compra')->withPivot('descuento', 'cantidad');
+    }
 }

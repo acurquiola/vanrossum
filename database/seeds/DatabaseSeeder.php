@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(FamiliasTableSeeder::class);
         $this->call(ProductosTableSeeder::class);
         $this->call(UnidadsTableSeeder::class);
+        $this->call(PresentacionsTableSeeder::class);
+        $this->call(DescuentosTableSeeder::class);
         $this->call(EmpresasTableSeeder::class);
         $this->call(CategoriasTableSeeder::class);
         $this->call(PreguntasTableSeeder::class);
@@ -28,5 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClasificacionsTableSeeder::class);
         $this->call(NovedadesTableSeeder::class);
         $this->call(ArchivosTableSeeder::class);
+        $this->call(EnviosTableSeeder::class);
+        $this->call(CuentasTableSeeder::class);
     }
 }

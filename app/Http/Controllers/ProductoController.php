@@ -23,6 +23,7 @@ class ProductoController extends Controller
 
     public function index()
     {
+      //  dd(\App\Producto::first());
         $productos = Producto::orderBy('orden')->orderBy('familia_id')->get();
         return view('adm.productos.index', compact('productos'));
     }

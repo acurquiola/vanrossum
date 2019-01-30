@@ -25,10 +25,19 @@
 						<div class="collapsible-body"  {{ (\Request::is('adm/productos*'))?"style=display:block;":"" }}>
 							<ul>
 								<li><a href="{{ action('ProductoController@create') }}" ><i class="material-icons">navigate_next</i>Crear Producto</a></li>
-								<li><a href="{{ action('ProductoController@index') }}" ><i class="material-icons">navigate_next</i>Ver productos</a></li>
+								<li><a href="{{ action('ProductoController@index') }}" ><i class="material-icons">navigate_next</i>Ver Productos</a></li>
 								<li><a href="{{ action('FamiliaController@create') }}" ><i class="material-icons">navigate_next</i>Crear Categorías</a></li>
 								<li><a href="{{ action('FamiliaController@index') }}" ><i class="material-icons">navigate_next</i>Ver Categorías</a></li>
 								<li><a href="{{ action('UnidadController@index') }}" ><i class="material-icons">navigate_next</i>Ver Unidades de Medición</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			 	<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/cuentas*'))?"seccion-activa":"" }}" tabindex="0" ><i class="fas fa-clipboard-list"></i>Cuentas Bancarias</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/cuentas*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href="{{ action('CuentaController@index') }}" ><i class="material-icons">navigate_next</i>Ver Cuenta</a></li>
 							</ul>
 						</div>
 					</li>

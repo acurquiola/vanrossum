@@ -1,0 +1,100 @@
+.image-carrito img{
+	height: 85px;
+	max-width: 85px;
+	width: 100%;
+}
+
+.carrito-th th{
+	color: #3F3F3F;
+	font-size: 15px;
+}
+
+.carrito-th{
+	border-bottom: 2px solid #F8A900; 
+	background: #F9F9F9;
+}
+
+.carrito-tr{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.icon-remove i{
+	color: #C4C4C4;
+	font-size: 20px;
+}
+
+.div-envios, .div-pago{
+	background: #F9F9F9;
+	border-top: 2px solid #F8A900;
+	padding: 1 15px;
+	margin-top: 30px;
+
+}
+
+.titulo-pago{
+	font-family: 'Montserrat Light';
+	font-size: 23px;
+	color: #B0B0B0;
+	line-height: 110%;
+	letter-spacing: 2;
+}
+
+.subtitulo-pago{
+	font-family: 'Montserrat Bold';
+	font-size: 15px;
+	letter-spacing: 1;
+	line-height: 120%;
+	padding-left: 15px;
+}
+
+.group-radio{
+	margin-left: 35px;
+}
+
+.group-radio span{
+	color: #595959;
+    font-size: 15px !important;
+    font-weight: 900;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
+	border: 2px solid #F8A900 !important;
+	
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
+		background-color: #F8A900 !important;
+}
+
+#codigo_postal::placeholder{ 
+	color: #9E9E9E; 
+	font-size: 13px;
+	text-align: center;
+}
+
+#total-pedido{
+	color: #595959;
+	font-size: 25px;
+	font-weight: 900;
+}
+
+.montos-totales{
+	color: #595959;
+	font-size: 20px;
+	font-weight: 900;
+}
+
+#div-monto{
+	border-bottom: 2px solid #B0B0B0;
+	margin-top: 2%;
+}
+
+#calculo-total{
+	margin-top: 3%;
+}
+
+#cuenta-bancaria{
+	font-size: 15px;
+	padding: 10px 35px;
+	display: none;
+}

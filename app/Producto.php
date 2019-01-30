@@ -9,7 +9,16 @@ class Producto extends Model
     protected $fillable = [
     	'nombre', 'descripcion', 'codigo', 'file_image', 'orden'
     ];
+    
+/*    protected $guarded = [];
+    protected $connection="firebird";
 
+
+
+   protected $primaryKey = 'Codigo';
+*/
+
+ //   public $timestamps = false;
 
     public function familia()
     {
@@ -30,4 +39,5 @@ class Producto extends Model
     {
         return $this->hasMany('App\Galeria');
     }
+
 }

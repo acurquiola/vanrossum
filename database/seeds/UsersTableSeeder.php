@@ -14,10 +14,10 @@ class UsersTableSeeder extends Seeder
       \DB::table('users')->insert(array (
   			0 =>
   			array (
-  				'id'       => 1,
-          'name'     => 'Cliente',
-          'username' => 'cliente',
-          'password' => bcrypt('cliente'),
+          'id'       => 1,
+          'name'     => 'Osole',
+          'email'    => 'soporte@osole.es',
+          'password' => bcrypt('osole'),
   			),
   		));
     }

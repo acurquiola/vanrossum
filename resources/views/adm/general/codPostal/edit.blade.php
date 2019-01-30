@@ -34,10 +34,9 @@
 							<i class="material-icons right">send</i>
 						</button>
 					</div>
-				</div>
-			</form>
-		</div>
-	</main>
+				</form>
+			</div>
+		</main>
 
 @include('adm.layouts.script')
 	<script>

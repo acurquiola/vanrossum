@@ -29,6 +29,8 @@
     <link href="{{ asset('css/page/contacto.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/page/preguntas.css') }}" rel="stylesheet">
     <link href="{{ asset('css/page/producto.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/page/carrito.css') }}" rel="stylesheet">
  <!--   <link href="{{ asset('css/page/producto.css') }}" rel="stylesheet">-->
     
     <link href="{{ asset('icons/fontawesome/css/all.css') }}" rel="stylesheet">

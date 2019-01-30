@@ -15,34 +15,26 @@ class DescuentosTableSeeder extends Seeder
 	  		0 =>
 	  		array (
 					'id'          => 1,
-					'cantidad'    => '0.9',
-					'precio'      => '2.5',
+					'desde_id'    => 1,
+					'hasta_id'    => 2,
 					'producto_id' => 1,
-					'unidad_id'   => 1,
+					'descuento'   => '10',
 	  		),
 	  		1 =>
 	  		array (
 					'id'          => 2,
-					'cantidad'    => '4.5',
-					'ubicacion'   => '8.11',
+					'desde_id'    => 2,
+					'hasta_id'    => 3,
 					'producto_id' => 1,
-					'unidad_id'   => 1,
+					'descuento'   => '15',
 	  		),
 	  		2 =>
 			array (
 					'id'          => 3,
-					'cantidad'    => '18',
-					'ubicacion'   => '10',
+					'desde_id'    => 3,
+					'hasta_id'    => 4,
 					'producto_id' => 1,
-					'unidad_id'   => 1,
-	  		),
-	  		3 =>
-	  		array (
-					'id'          => 4,
-					'cantidad'    => '24',
-					'producto_id' => 1,
-					'ubicacion'   => '800',
-					'unidad_id'   => 1,
+					'descuento'   => '30',
 	  		),
 	  	));
     }

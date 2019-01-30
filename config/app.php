@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,7 @@ return [
          */
         App\Providers\DataServicesProviders::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Firebird\FirebirdServiceProvider::class,
 
         
         /*
@@ -225,6 +226,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+        'Firebird' => Firebird\FirebirdServiceProvider::class,
 
 
     ],
