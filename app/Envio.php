@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Envio extends Model
 {
     protected $fillable = [
-    	'tipo','comentarios', 'monto'
+    	'tipo','comentarios', 'monto', 'direccion'
     ];
     
     public function compra()

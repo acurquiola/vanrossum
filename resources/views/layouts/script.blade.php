@@ -2,7 +2,7 @@
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/materialize.min.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
 
 
 <script>

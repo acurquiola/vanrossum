@@ -18,6 +18,7 @@ class EnviosTableSeeder extends Seeder
 				'tipo'        => 'temporal',
 				'comentarios' => null,
 				'monto'       => null,
+				'direccion'   => null,
 	  		),
 	  	));
     }

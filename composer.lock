@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb66d99f83832952500244cedc0597cf",
+    "content-hash": "e1b446fd44ddaff322b6ce9563a458cd",
     "packages": [
         {
             "name": "darryldecode/cart",
@@ -1076,16 +1076,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.23",
+            "version": "v5.7.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0012324a3d31af793c5c71d05dcd0e348c424b69"
+                "reference": "2ede55db4b8201ed0450fa7e7a4d7220aa29bc34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0012324a3d31af793c5c71d05dcd0e348c424b69",
-                "reference": "0012324a3d31af793c5c71d05dcd0e348c424b69",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2ede55db4b8201ed0450fa7e7a4d7220aa29bc34",
+                "reference": "2ede55db4b8201ed0450fa7e7a4d7220aa29bc34",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1218,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-01-29T14:33:25+00:00"
+            "time": "2019-01-29T22:13:46+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -1840,20 +1840,19 @@
         },
         {
             "name": "mercadopago/dx-php",
-            "version": "dev-master",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercadopago/dx-php.git",
-                "reference": "d0c328285253401c0f1492489b8596889d4312da"
+                "reference": "9a9e4538924edbd8310640b5b7d97125f4fdbaa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/d0c328285253401c0f1492489b8596889d4312da",
-                "reference": "d0c328285253401c0f1492489b8596889d4312da",
+                "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/9a9e4538924edbd8310640b5b7d97125f4fdbaa2",
+                "reference": "9a9e4538924edbd8310640b5b7d97125f4fdbaa2",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "1.4.*",
                 "doctrine/common": "2.6.*",
                 "php": ">=5.5.0"
             },
@@ -1894,7 +1893,44 @@
                 }
             ],
             "homepage": "https://github.com/mercadopago/dx-php",
-            "time": "2019-01-04T20:23:43+00:00"
+            "time": "2018-11-28T19:52:54+00:00"
+        },
+        {
+            "name": "mercadopago/sdk",
+            "version": "v0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercadopago/sdk-php.git",
+                "reference": "b9fd134a39ff483e1326028ee0b9bbaa16ec927e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/b9fd134a39ff483e1326028ee0b9bbaa16ec927e",
+                "reference": "b9fd134a39ff483e1326028ee0b9bbaa16ec927e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/mercadopago.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Horacio Casatti",
+                    "email": "horacio.casatti@mercadolibre.com"
+                }
+            ],
+            "description": "MercadoPago SDK module for Payments integration.",
+            "keywords": [
+                "mercadopago",
+                "sdk"
+            ],
+            "time": "2018-10-30T17:21:08+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5935,8 +5971,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jacquestvanzuydam/laravel-firebird": 20,
-        "mercadopago/dx-php": 20
+        "jacquestvanzuydam/laravel-firebird": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

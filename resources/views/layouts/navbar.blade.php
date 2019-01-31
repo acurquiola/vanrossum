@@ -33,7 +33,7 @@
 			<div>
 				<ul class="item-left left hide-on-med-and-down" sy>
 					<li><a href=" {{ url('/productos/familias')}} " {{ (\Request::is('productos*'))?"id=seccion-active":"" }} >PRODUCTOS</a></li>
-					<li><a href="#" {{ (\Request::is('destacados*'))?"id=seccion-active":"" }} >DESTACADOS</a></li>					
+					<li><a href="{{ url('/productos/familias')}}" {{ (\Request::is('destacados*'))?"id=seccion-active":"" }} >DESTACADOS</a></li>					
 					<li><a href=" {{ url('/novedades')}} " {{ (\Request::is('novedades*'))?"id=seccion-active":"" }}>NOVEDADES</a></li>
 				</ul>
 				<a class="brand-logo center" href="{{ url('/') }}">

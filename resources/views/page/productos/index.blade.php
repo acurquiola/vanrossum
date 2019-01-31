@@ -20,6 +20,7 @@
 						</div>
 						<img class="familia-img" src="{{ asset('images/familias/'.$f->file_image) }}">
 					</div>
+					<p class="producto-nombre">{{ $f->nombre }}</p>
 				</div>	
 			@empty
 			@endforelse

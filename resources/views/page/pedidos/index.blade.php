@@ -128,6 +128,12 @@
 										<div class="col s12 l4"> 
 											<input type="text" name="envio_precio" id="codigo_postal_monto" disabled>
 										</div>
+										
+										<div class="col s12" id="direccion-div"> 
+											<input type="text" name="direccion_envio" id="direccion_envio">
+											<label>Dirección de Envío</label>
+										</div>
+
 									</div>
 								</label>
 							</p>
@@ -213,8 +219,8 @@
 				</div>
 			</div>
 
-			<input type="hidden" id="tipo_envio">
-			<input type="hidden" id="medio_pago">
+			<input type="hidden" id="tipo_envio" value="retiro_local">
+			<input type="hidden" id="medio_pago" value="mercado_pago">
 
 			<div class="row ">			 	
 				<div class="col s12 l6 left" >
@@ -304,8 +310,10 @@
 				if(id == 'envio'){				
 					$('#codigo_postal').removeAttr('disabled');
 					$('#tipo_envio').val(id);
+					$('#direccion-div').show('slow');
 
 				}else{
+					$('#cuenta-bancaria').hide('slow');
 					$('#codigo_postal').attr('disabled','disabled');
 					$('#codigo_postal_monto').val('');
 					$('#envioTotal').html('$ 0.00');
@@ -408,8 +416,10 @@
 				var envio_codigo      = $('#codigo_postal').val();
 				
 				var envio_comentarios = $('#mensaje_express').val();
+				var envio_direccion   = $('#direccion_envio').val();
 				
-				var confirmarPedido   = "{{ action('SeccionPedidoController@confirmar')}}";
+				var confirmarPedido   = "{{ action('SeccionPedidoController@confirmarPedido')}}";
+
 
 		        $.ajax({
 	        		data:{id: compra_id,
@@ -417,6 +427,7 @@
 	        			  envio_codigo: envio_codigo,
 	        			  envio_monto: envio_monto,
 	        			  envio_comentarios: envio_comentarios,
+	        			  envio_direccion: envio_direccion,
 	        			  medio_pago: medio_pago,
 	        			  monto: monto },
 	        		method: 'POST',
@@ -425,17 +436,16 @@
 				    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				  	}
 		        })
-		        .always(function(response, status, responseObject){
+		        .fail(function(){
+		        	console.log("error");
+		        })
+		        .done(function(response, status, responseObject){
 	        		if(response['status'] == 0){
-<<<<<<< HEAD
-	        		console.log(status);
-=======
-	        			alert('Pedido generado exitósamente.');
-	        			window.location = "{{ action('SeccionPedidoController@index')}}";
->>>>>>> b41cb1c57d2b18cb694a4e0dff00a675f936fe96
+	        			window.location = "{{ action('SeccionPedidoController@procesarPago')}}";
 	        		}
 	        		
-		        });
+	        	});
+				
 
 
 			});

@@ -45,6 +45,8 @@
 
 
 				<form method="POST"  enctype="multipart/form-data" action="{{action('SeccionPedidoController@store')}}">
+					{{ csrf_field() }}    
+
 					@if($producto->presentaciones->count() > 0)
 
 						<div class="row" id="presentaciones-row">
@@ -137,8 +139,8 @@
 								<tbody>
 									@foreach($producto->descuentos as $d)
 									<tr data-id="{{ $d->id }}" data-desde="{{ $d->desde->cantidad }}"  data-hasta="{{ $d->hasta->cantidad }}"  data-descuento="{{ $d->descuento }}" >
-										<td>{{$d->desde->cantidad}}</td>
-										<td>{{$d->hasta->cantidad}}</td>
+										<td>{{$d->desde->cantidad}}Kg</td>
+										<td>{{$d->hasta->cantidad}}Kg</td>
 										<td id="cantidad-td">{{$d->descuento}}%</td>
 										<td>								
 											<span id="monto{{$d->id}}" data-id="{{ $d->id }}" class="center monto-descuento">$0.00</span>

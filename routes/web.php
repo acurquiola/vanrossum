@@ -39,8 +39,15 @@ Route::prefix('productos')->group(function () {
 Route::get('carrito', 'SeccionPedidoController@index');
 Route::post('carrito/agregar-carrito', 'SeccionPedidoController@store');
 Route::get('carrito/consultar-monto', 'SeccionPedidoController@consultarMontoEnvio');
-Route::post('carrito/confirmar', 'SeccionPedidoController@confirmar');
+Route::post('carrito/confirmar', 'SeccionPedidoController@confirmarPedido');
 Route::post('carrito/remove', 'SeccionPedidoController@remove');
+Route::get('carrito/procesarPago', 'SeccionPedidoController@procesarPago');
+
+Route::get('carrito/notifications/mp', 'CompraController@ipnNotification')->name('ipn.notification');
+
+Route::get('carrito/orden/success', 'SeccionPedidosController@success')->name('pago.exitoso');
+Route::get('carrito/orden/pending', 'SeccionPedidosController@pending')->name('pago.pendiente');
+Route::get('carrito/orden/failure', 'SeccionPedidosController@pending')->name('pago.failure');
 
 Route::get('/dolar', 'ValorDolarController@index');
 

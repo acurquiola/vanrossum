@@ -12,8 +12,8 @@
 						<div class="collapsible-body" {{ (\Request::is('adm/home/*'))?"style=display:block;":"" }}>
 							<ul>
 								<li><a href="{{ action('HomeController@index') }}"><i class="material-icons">navigate_next</i>Información</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Ver Descuentos</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Ver Productos</a></li>
+{{-- 								<li><a href=""><i class="material-icons">navigate_next</i>Ver Descuentos</a></li>
+								<li><a href=""><i class="material-icons">navigate_next</i>Ver Productos</a></li> --}}
 								<li><a href="{{ action('SliderController@create', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
 								<li><a href="{{ action('SliderController@index', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>							

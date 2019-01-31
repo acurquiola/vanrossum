@@ -11,11 +11,17 @@ use App\Compra;
 use App\Producto;
 use App\Descuento;
 use App\Presentacion;
+use App\Dato;
 use Illuminate\Support\Facades\Input;
 
 use App\Codigo;
 use App\Cuenta;
 use App\Envio;
+
+use MP;
+use Mercadopago;
+
+use Mail;
 
 
 class SeccionPedidoController extends Controller
@@ -134,41 +140,48 @@ class SeccionPedidoController extends Controller
     }
 
 
-    public function confirmar(Request $request){
-<<<<<<< HEAD
-    dd($request->all());
-		$compra = Compra::find($request->id);
-=======
+    public function confirmarPedido(Request $request){
+
    		$compra = Compra::find($request->id);
->>>>>>> b41cb1c57d2b18cb694a4e0dff00a675f936fe96
 		$envio  = new Envio;
 
-		if($request->envio_tipo == 'envio')
-			$envio->tipo        = 'Envio';
-		
-
-		if($request->envio_tipo == 'express')
-			$envio->tipo        = 'Express';
-		
-		if($request->envio_tipo == 'retiro_local')
-			$envio->tipo        = 'Retiro por Local';
-		
+		$envio->tipo        = $request->envio_tipo;
 		$envio->monto       = $request->envio_monto;
-		$envio->comentarios = $request->envio_comentarios;
-
+		$envio->comentarios = $request->envio_comentarios.$request->envio_codigo;
+		$envio->direccion   = $request->envio_direccion;
 		$envio->save();
-		
+
+
 		$compra->envio_id   = $envio->id;
 		$compra->monto      = $request->monto;
-		$compra->estado     = 'procesado';
 		$compra->fecha      = Carbon::now();
 		
 		$compra->medio_pago = ($request->medio_pago == 'mercado_pago')?'Mercado Pago':'Transferencia Bancaria';
+		$compra->save();
 
-		if($compra->save())
-            return response()->json(array("text"=>'Done!',"status"=>0));
-        else
-            return response()->json(array("text"=>'No se puedo procesar la compra',"status"=>1));
+		Session::put('medio_pago', $request->medio_pago);
+
+        $data = array(['usuario' => \Auth::user(),
+                       'pedido'  => $compra->presentaciones(),
+                       'compra'  => $compra]);
+        Mail::send('page.pedidos.email.email', $data[0], function($message){
+                $dato = Dato::where('tipo', 'email')->first();
+	    		$message->subject('Has recibido un pedido');
+	    		$message->to($dato->descripcion);
+	    	}
+	    );
+
+
+		if($compra->medio_pago == 'Mercado Pago'){
+			$confirmacion_url = $this->generatePaymentGateway();
+			Session::put('confirmacion_url', $confirmacion_url);
+			return response()->json(array("text"=>'Done!',"status"=>0 )); 
+		}else{
+			$compra->estado     = 'procesado';
+			$compra->save();
+
+            return response()->json(array("text"=>'Done!',"status"=>0 ));
+		}
     }
 
     public function remove(Request $request){
@@ -180,4 +193,141 @@ class SeccionPedidoController extends Controller
         else
             return response()->json(array("text"=>'Error!',"status"=>1));
     }
+
+
+	public function generatePaymentGateway()
+	{
+			
+	 	$mp = new MP (env('MERCADOPAGO_CLIENTE_ID'), env('MERCADOPAGO_CLIENTE_SECRET'));
+		$current_user = Auth::user();
+
+		$access_token = $mp->get_access_token();
+
+        $compra = Compra::where('user_id', $current_user->id)
+                          ->where('estado', 'activo')
+                          ->first();
+
+        $pedido = Compra::find($compra->id)->presentaciones()->get();
+
+
+		foreach ($pedido as $p){
+
+			$preferenceData['items'][] = [
+				'id'          => 1,
+				'title'       => $p->producto->nombre,            
+				'description' => 'Compra de artículos VanRossum mediante Mercadopago',
+				'quantity'    => (int)$p->pivot->cantidad,
+				'unit_price'  => (float)$p->precio,
+				'currency_id' => 'ARS',
+			];
+
+		};
+
+		$preference_data = array(
+			'external_reference' => 'ORDEN00'.$compra->id,			
+			"items" => array(
+				array(
+					"id" => $compra->id,
+					"title" => "Compra de Artículos de VanRossum",
+					"currency_id" => "ARS",
+					"description" => "Compra de Artículos de VanRossum",
+					"quantity" => 1,
+					"unit_price" => $compra->monto
+				)
+			),
+			"payer" => array(
+				"name" => \Auth::user()->name,
+				"email" => \Auth::user()->email, 
+				"date_created" => Carbon::now(),
+				"address" => array(
+					"street_name" => $compra->envio->direccion,
+					"zip_code" => $compra->envio->comentarios,
+				)
+			),
+			"back_urls" => array(
+				"success" => route('pago.exitoso'),
+				"pending" => route('pago.pendiente'),
+				"failure" => route('pago.failure'),
+			),
+		);
+
+		$preference = $mp->create_preference($preference_data);
+		$confirmacion_url = $preference['response']['init_point'];
+
+
+/*
+		$mp = new MP (env('MERCADOPAGO_CLIENTE_ID'), env('MERCADOPAGO_CLIENTE_SECRET'));
+		$current_user = Auth::user();
+
+		$access_token = $mp->get_access_token();
+
+        $compra = Compra::where('user_id', $current_user->id)
+                          ->where('estado', 'activo')
+                          ->first();
+
+        $pedido    = Compra::find($compra->id)->presentaciones()->get();
+		$preferenceData = [
+			'external_reference' => 'ORDEN00'.$compra->id,			
+			"back_urls" => [
+				"success" => route('pago.exitoso'),
+				"pending" => route('pago.pendiente'),
+			]
+		];
+
+		foreach ($pedido as $p){
+
+			$preferenceData['items'][] = [
+				'id'          => 1,
+				'title'       => $p->producto->nombre,            
+				'description' => 'Compra de artículos Adrimat mediante Mercadopago',
+				'quantity'    => (int)$p->pivot->cantidad,
+				'unit_price'  => (float)$p->precio,
+			];
+		};
+
+		$preference       = $mp->create_preference($preferenceData);
+		
+		$confirmacion_url = $preference['response']['init_point'];*/
+		
+		return $confirmacion_url; 
+	}
+
+	public function procesarPago(){
+		return view('page.pedidos.confirmacion');
+	}
+
+
+
+    public function success(){
+
+        $compra = Compra::where('user_id', Auth::user()->id)
+                          ->where('estado', 'activo')
+                          ->first();
+
+        $compra->estado = 'procesado';
+        $compra->save();
+
+
+        return view('page.pedidos.success');
+    }
+
+    public function pending(){
+
+        $compra = Compra::where('user_id', Auth::user()->id)
+                          ->where('status', 'activo') //Compra procesada pero no se ha comprobado el pago
+                          ->first();
+
+        $compra->estado = 'procesado';
+        $compra->save();
+
+        return view('page.pedidos.pendiente');
+    }
+
+
+    public function failure(){
+
+        return view('page.pedidos.failure');
+    }
+
+
 }

@@ -17,6 +17,7 @@ class CreateEnviosTable extends Migration
             $table->increments('id');
             $table->string('tipo');
             $table->string('comentarios')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('monto')->nullable();
             $table->timestamps();
         });
