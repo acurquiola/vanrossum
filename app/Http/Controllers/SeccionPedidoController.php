@@ -135,7 +135,7 @@ class SeccionPedidoController extends Controller
 
 
     public function confirmar(Request $request){
-    dd($request->all())		;
+    dd($request->all());
 		$compra = Compra::find($request->id);
 		$envio  = new Envio;
 

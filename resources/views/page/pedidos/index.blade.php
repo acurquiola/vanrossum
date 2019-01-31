@@ -376,17 +376,7 @@
 		        })
 		        .always(function(response, status, responseObject){
 	        		if(response['status'] == 0){
-	        			const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-end',
-						  showConfirmButton: false,
-						  timer: 3000
-						});
-
-						Toast.fire({
-						  type: 'success',
-						  title: 'Signed in successfully'
-						})
+	        		console.log(status);
 	        		}
 	        		
 		        });
