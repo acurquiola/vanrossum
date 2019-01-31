@@ -22,10 +22,10 @@ class SeccionPedidoController extends Controller
 {
     public function index(){
 		$cuenta_bancaria = Cuenta::first();
-		$user_id         = \Auth::user()->id;
 
-    	if(Auth::check()){
-    		$compra = Compra::where('user_id', $user_id)->where('estado', 'activo')->first();
+		if(Auth::check()){
+			$user_id = \Auth::user()->id;
+			$compra  = Compra::where('user_id', $user_id)->where('estado', 'activo')->first();
 
     		if(!$compra){
 				$compra           = new Compra;
@@ -135,8 +135,12 @@ class SeccionPedidoController extends Controller
 
 
     public function confirmar(Request $request){
+<<<<<<< HEAD
     dd($request->all());
 		$compra = Compra::find($request->id);
+=======
+   		$compra = Compra::find($request->id);
+>>>>>>> b41cb1c57d2b18cb694a4e0dff00a675f936fe96
 		$envio  = new Envio;
 
 		if($request->envio_tipo == 'envio')
@@ -146,13 +150,13 @@ class SeccionPedidoController extends Controller
 		if($request->envio_tipo == 'express')
 			$envio->tipo        = 'Express';
 		
-
-
 		if($request->envio_tipo == 'retiro_local')
 			$envio->tipo        = 'Retiro por Local';
 		
 		$envio->monto       = $request->envio_monto;
 		$envio->comentarios = $request->envio_comentarios;
+
+		$envio->save();
 		
 		$compra->envio_id   = $envio->id;
 		$compra->monto      = $request->monto;
@@ -165,5 +169,15 @@ class SeccionPedidoController extends Controller
             return response()->json(array("text"=>'Done!',"status"=>0));
         else
             return response()->json(array("text"=>'No se puedo procesar la compra',"status"=>1));
+    }
+
+    public function remove(Request $request){
+		$presentacion = Presentacion::find($request->id);
+		$compra       = Compra::find($request->compra);
+
+        if($compra->presentaciones()->detach($presentacion))
+            return response()->json(array("text"=>'Done!',"status"=>0));
+        else
+            return response()->json(array("text"=>'Error!',"status"=>1));
     }
 }

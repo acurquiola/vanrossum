@@ -15,7 +15,7 @@
 						
 						@auth()
 							<a  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-								<i  style="color: #FFF; font-size: 25px; margin-top: 5px" class="fas fa-power-off"></i>
+								<i style="color: #FFF; font-size: 25px; margin-top: 5px" class="fas fa-sign-out-alt"></i>
 							</a>
 						@endauth
 
