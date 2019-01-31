@@ -37,9 +37,10 @@ Route::prefix('productos')->group(function () {
 
 //Sección de Productos 
 Route::get('carrito', 'SeccionPedidoController@index');
-Route::post('agregar-carrito', 'SeccionPedidoController@store');
-Route::GET('consultar-monto', 'SeccionPedidoController@consultarMontoEnvio');
-Route::post('confirmar', 'SeccionPedidoController@confirmar');
+Route::post('carrito/agregar-carrito', 'SeccionPedidoController@store');
+Route::get('carrito/consultar-monto', 'SeccionPedidoController@consultarMontoEnvio');
+Route::post('carrito/confirmar', 'SeccionPedidoController@confirmar');
+Route::post('carrito/remove', 'SeccionPedidoController@remove');
 
 Route::get('/dolar', 'ValorDolarController@index');
 

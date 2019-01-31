@@ -70,7 +70,7 @@
 				</thead>
 				<tbody>
 					@forelse($compra->presentaciones as $p)
-						<tr class="carrito-tr">
+						<tr class="carrito-tr" id="item-{{$p->id}}" >
 							<td class="image-carrito">
 								<img src="{{ asset('images/productos/'.$p->producto->file_image) }}">
 							</td> 
@@ -89,8 +89,7 @@
 							<td style="text-align: right" class="subtotal-producto" data-descuento="{{ $p->pivot->descuento }}">
 								${{ $p->cantidad * $p->pivot->cantidad * $p->precio }} 
 							</td>
-							<td class="center icon-remove">
-								<i class="fas fa-trash-alt"></i>
+							<td class="center"><a  onclick="return confirm('¿Está seguro que desea remover este producto?')"   href="#!" class="icon-remove" data-id="{{ $p->id }}" data-compra="{{ $compra->id }}"><i class="far fa-trash-alt"></i></a>
 							</td>
 						</tr>
 					@empty
@@ -113,7 +112,7 @@
 							
 							<p>
 								<label>
-									<input class="with-gap" name="entrega" type="radio" id="retiro_local" />
+									<input class="with-gap" name="entrega" type="radio" id="retiro_local"  checked />
 									<span>Retiro por local</span>
 								</label>
 							</p>
@@ -160,7 +159,7 @@
 						<div class="group-radio">							
 							<p>
 								<label>
-									<input class="with-gap" name="pago" type="radio" id="mercado_pago" />
+									<input class="with-gap" name="pago" type="radio" id="mercado_pago" checked />
 									<span>Mercado Pago</span>
 								</label>
 							</p>
@@ -223,7 +222,7 @@
 				</div>
 		
 				<div class="col s12 l6" >
-					<a data-compra="{{ $compra->id }}" onclick="return confirm('¿Está seguro que desea procesar la compra?')"  id="estandar-btn" class="waves-effect waves-light btn right z-depth-0" >PROCESAR COMPRA</a>
+					<a data-compra="{{ $compra->id }}" disabled onclick="return confirm('¿Está seguro que desea procesar la compra?')"  id="estandar-btn" class="waves-effect waves-light btn right z-depth-0" >PROCESAR COMPRA</a>
 				</div>
 			</div>
 
@@ -235,12 +234,68 @@
 	@include('layouts.script')
 
 	<script type="text/javascript">
+
+		function habilitar_boton(){
+
+			if(($('#total-pedido').html()).split('$')[1] > 0){
+				$('#estandar-btn').removeAttr('disabled');
+			}else{
+				$('#estandar-btn').attr('disabled','disabled');	
+			}
+		}
+		function calculo(){
+			montoTotal         = 0;
+			montoDescuento     = 0;
+			
+			monto              = 0;
+			subtotal_monto     = 0;
+			
+			descuento_producto = 0;
+			descuento          = 0;
+
+			$('.orden-table').find('.subtotal-producto').each(function(){
+
+				//Cálculo de subtotal
+
+				var subtotal_producto = $(this).html();				
+				var monto             = subtotal_producto.split('$')[1];				
+				subtotal_monto        = parseFloat(monto) + parseFloat(subtotal_monto);
+
+				//Cálculo de descuento
+				
+				var descuento_producto = $(this).data('descuento');
+				descuento              = parseFloat(descuento_producto) + parseFloat(descuento);
+
+
+			});
+
+
+			$('#subtotalTotal').html('$ '+subtotal_monto.toFixed(2));
+			$('#descuentoTotal').html('$ '+descuento.toFixed(2));
+
+
+			var montoTotal = parseFloat(subtotal_monto).toFixed(2) - parseFloat(descuento).toFixed(2);
+						
+			var montoEnvio = $('#envioTotal').html();
+			var montoEnvio = montoEnvio.split('$')[1];
+
+			montoTotal = montoTotal + parseFloat(montoEnvio);
+
+			$('#total-pedido').html('$ '+montoTotal);
+
+			habilitar_boton();
+		}
+
 	
 		$(document).ready(function(){
 			subtotal       = 0;
 			subtotal_monto = 0;
 			descuento      = 0;
 			valor          = 0;
+
+			calculo();
+
+			habilitar_boton();
 
 			$("input[name=entrega]").change(function(){
 				var value = $(this).val();
@@ -254,11 +309,11 @@
 					$('#codigo_postal').attr('disabled','disabled');
 					$('#codigo_postal_monto').val('');
 					$('#envioTotal').html('$ 0.00');
+
 					
-					var montoTotal = parseFloat(subtotal_monto).toFixed(2) - parseFloat(descuento).toFixed(2);
+					calculo();
 
-					$('#total-pedido').html('$ '+montoTotal);
-
+					habilitar_boton();
 				}
 
 				if(id == 'express'){				
@@ -288,30 +343,6 @@
 				}
 			});
 
-			$('.orden-table').find('.subtotal-producto').each(function(){
-
-				//Cálculo de subtotal
-
-				var subtotal_producto = $(this).html();				
-				var monto             = subtotal_producto.split('$')[1];				
-				subtotal_monto        = parseFloat(monto) + parseFloat(subtotal_monto);
-
-				//Cálculo de descuento
-				
-				var descuento_producto = $(this).data('descuento');
-				descuento              = parseFloat(descuento_producto) + parseFloat(descuento);
-
-
-			});
-
-
-			$('#subtotalTotal').html('$ '+subtotal_monto.toFixed(2));
-			$('#descuentoTotal').html('$ '+descuento.toFixed(2));
-
-			var montoTotal = parseFloat(subtotal_monto).toFixed(2) - parseFloat(descuento).toFixed(2);
-
-			$('#total-pedido').html('$ '+montoTotal);
-
 
 			$('#codigo_postal').on('change', function() { 
 			    var codigo = $(this).val(); 
@@ -329,20 +360,40 @@
 	        		if(response['status'] == 0){
 						$('#codigo_postal_monto').val('$ '+response['codigo']['envio']);
 						$('#envioTotal').html('$ '+response['codigo']['envio']);
-						
-						var montoDescuento = $('#envioTotal').html();
-						var montoDescuento = montoDescuento.split('$')[1];
 
-						montoTotal = montoTotal + parseFloat(montoDescuento);
+						calculo();
 
-						$('#total-pedido').html('$ '+montoTotal);
-
-
+						habilitar_boton();
 	        		}
 		        });
 
 			});
 
+
+
+			$('.icon-remove').click(function() {
+				var id         = $(this).data('id');			
+				var compra     = $(this).data('compra');			
+				var removeItem = "{{ action('SeccionPedidoController@remove')}}";
+
+				$.ajax({
+					data:{id: id, compra: compra},
+					method: 'POST',
+					url: removeItem,
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				})
+				.always(function(response, status, responseObject){
+					console.log(response)
+					if(response['status'] == 0){
+						$('#item-'+id).remove();
+
+						calculo();
+
+					}
+				});
+			});
 
 
 
@@ -376,17 +427,8 @@
 		        })
 		        .always(function(response, status, responseObject){
 	        		if(response['status'] == 0){
-	        			const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-end',
-						  showConfirmButton: false,
-						  timer: 3000
-						});
-
-						Toast.fire({
-						  type: 'success',
-						  title: 'Signed in successfully'
-						})
+	        			alert('Pedido generado exitósamente.');
+	        			window.location = "{{ action('SeccionPedidoController@index')}}";
 	        		}
 	        		
 		        });
